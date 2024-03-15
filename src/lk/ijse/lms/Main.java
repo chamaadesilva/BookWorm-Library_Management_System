@@ -23,7 +23,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setScene(new Scene(load(Objects.requireNonNull(this.getClass()
-                .getResource("view/LoginPageForm.fxml")))));
+                .getResource("view/MainForm.fxml")))));
         primaryStage.setTitle("BookWorm");
         primaryStage.centerOnScreen();
         primaryStage.show();

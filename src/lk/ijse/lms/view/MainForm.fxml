@@ -10,9 +10,9 @@
 
 <AnchorPane fx:id="root" prefHeight="400.0" prefWidth="668.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0.5EM;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.lms.controller.MainFormController">
     <children>
-        <ImageView fitHeight="376.0" fitWidth="639.0" layoutX="14.0" layoutY="14.0" opacity="0.43" pickOnBounds="true" smooth="false">
+        <ImageView fitHeight="387.0" fitWidth="656.0" layoutX="6.0" layoutY="7.0" opacity="0.64" pickOnBounds="true" smooth="false">
             <image>
-                <Image url="@../assets/online-education-technology-with-laptop_25030-43260.jpg" />
+                <Image url="@../assets/BEST-LIBRARY-AUTOMATION-SOFTWARE-min.png" />
             </image>
         </ImageView>
         <JFXButton fx:id="btnBook" buttonType="RAISED" layoutX="238.0" layoutY="35.0" onMouseClicked="#openBookDetail" prefHeight="45.0" prefWidth="192.0" style="-fx-background-color: #34495e; -fx-background-radius: 1em;" stylesheets="@../assets/style/Style.css" text="Book" textFill="WHITE">
