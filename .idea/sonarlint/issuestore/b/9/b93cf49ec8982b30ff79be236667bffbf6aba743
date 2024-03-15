@@ -1,16 +1,19 @@
 
-f
-java:S1104"PMake root a static final constant or non-public and provide accessors if needed.(ı„È¬
-i
-java:S1104"SMake txtName a static final constant or non-public and provide accessors if needed.(ºßÕû
 m
-java:S1104"RMake txtPwd a static final constant or non-public and provide accessors if needed.(ÉÔ¦Ìÿÿÿÿÿ
-i
-java:S1104"SMake lblHide a static final constant or non-public and provide accessors if needed.(ø†Ø
-O
-java:S1172"2Remove this unused method parameter "actionEvent".(æ®ì…8º³Àíã1
-W	java:S125"<This block of commented-out lines of code should be removed.(˜Ñèy8ÁƒÁíã1
+java:S1104"PMake root a static final constant or non-public and provide accessors if needed.(ı„È¬8Í†üŒä1
+p
+java:S1104"SMake txtName a static final constant or non-public and provide accessors if needed.(ºßÕû8Í†üŒä1
+t
+java:S1104"RMake txtPwd a static final constant or non-public and provide accessors if needed.(ÉÔ¦Ìÿÿÿÿÿ8Í†üŒä1
+p
+java:S1104"SMake lblHide a static final constant or non-public and provide accessors if needed.(ø†Ø8Í†üŒä1
+|
+java:S1104"ZMake powerOffSystem a static final constant or non-public and provide accessors if needed.(Ñš‰€ùÿÿÿÿ8œ¨²ä1
+T
+java:S1172"2Remove this unused method parameter "actionEvent".(Ìêîûÿÿÿÿ8õ†üŒä1
 S
-java:S1172 "1Remove this unused method parameter "mouseEvent".(Ô¯õçşÿÿÿÿ8ıÜ¾íã1
+java:S1172/"1Remove this unused method parameter "mouseEvent".(Ô¯õçşÿÿÿÿ8ù†üŒä1
 S
-java:S1172-"1Remove this unused method parameter "mouseEvent".(œÕÀ»øÿÿÿÿ8É„Åíã1
+java:S1172<"1Remove this unused method parameter "mouseEvent".(œÕÀ»øÿÿÿÿ8€‡üŒä1
+N
+java:S1172H"1Remove this unused method parameter "mouseEvent".(Ô¶”8ÚÊ·ä1

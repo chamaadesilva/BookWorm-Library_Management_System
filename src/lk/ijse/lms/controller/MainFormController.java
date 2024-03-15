@@ -14,6 +14,7 @@ public class MainFormController {
     public JFXButton btnBook;
     public JFXButton btnLibraryBranch;
     public JFXButton btnMember;
+    public JFXButton logOutBtn;
 
     public void openBookDetail(MouseEvent mouseEvent) throws IOException {
         UILoader.load("BookForm", root);
@@ -40,5 +41,9 @@ public class MainFormController {
 
     public void SearchHistoryOnAction(ActionEvent event) throws IOException {
         UILoader.load("SearchHistoryForm", root);
+    }
+
+    public void logOtClicked(ActionEvent actionEvent) throws IOException {
+        UILoader.load("LoginPageForm", root);
     }
 }

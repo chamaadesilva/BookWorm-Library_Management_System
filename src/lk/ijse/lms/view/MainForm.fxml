@@ -81,5 +81,6 @@
             <Glow />
          </effect>
       </JFXButton>
+      <JFXButton fx:id="logOutBtn" buttonType="RAISED" layoutX="577.0" layoutY="354.0" onAction="#logOtClicked" style="-fx-background-color: #ff4757;" text="Log Out" textFill="WHITE" />
     </children>
 </AnchorPane>

@@ -8,29 +8,40 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.lms.bo.BOFactory;
+import lk.ijse.lms.bo.UserBO;
+import lk.ijse.lms.dto.UserDto;
 import lk.ijse.lms.util.NotificationController;
 import lk.ijse.lms.util.UILoader;
 
-import java.io.IOException;
+import java.util.List;
 
 public class LoginPageFormController {
+    private final UserBO userBO = (UserBO) BOFactory.getBOFactory().getBO(BOFactory.BoTypes.USER);
     public AnchorPane root;
     public TextField txtName;
     public PasswordField txtPwd;
     public Label lblHide;
+    public ImageView powerOffSystem;
 
-    public void logInOnAction(ActionEvent actionEvent) throws IOException {
-        if (txtName.getText().equals("root")) {
-            if (txtPwd.getText().equals("password")) {
-//                UILoader.SetUiCloseUnderTheAnchorpane("AdminOrCashier", FirstPageAnchorPaneContext);
-                NotificationController.LoginSuccessfulNotification("YOUR");
-                UILoader.load("MainForm", root);
+    public void logInOnAction(ActionEvent actionEvent) throws Exception {
+
+        List<UserDto> all = userBO.findAll();
+
+        for (UserDto userDto : all) {
+            if (txtName.getText().equals(userDto.getName())) {
+                if (txtPwd.getText().equals(userDto.getPassword())) {
+                    NotificationController.LoginSuccessfulNotification("YOUR");
+                    UILoader.load("MainForm", root);
+                } else {
+                    NotificationController.LoginUnSuccessfulNotification("entered", 3);
+                }
             } else {
-                NotificationController.LoginUnSuccessfulNotification("entered", 3);
+                NotificationController.LoginSuccessfulNotification("");
             }
-        } else {
-            NotificationController.LoginSuccessfulNotification("");
         }
+
+
     }
 
     public void showPasswordOnMousePressed(MouseEvent mouseEvent) {
@@ -56,5 +67,9 @@ public class LoginPageFormController {
         txtPwd.setText(txtPwd.getPromptText());
         txtPwd.setPromptText("");
         txtPwd.setDisable(false);
+    }
+
+    public void systemShutDown(MouseEvent mouseEvent) {
+        System.exit(0);
     }
 }

@@ -45,5 +45,10 @@
             <Image url="@../assets/6888606-removebg-preview.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="powerOffSystem" fitHeight="42.0" fitWidth="40.0" layoutX="14.0" layoutY="441.0" onMouseClicked="#systemShutDown" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-power-off-96.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
