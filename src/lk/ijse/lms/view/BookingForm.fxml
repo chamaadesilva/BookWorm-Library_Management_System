@@ -8,18 +8,19 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="553.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" stylesheets="@../assets/style/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.lms.controller.BookingFormController">
    <children>
-      <AnchorPane layoutX="16.0" layoutY="71.0" prefHeight="185.0" prefWidth="768.0" style="-fx-background-color: #bdc3c7; -fx-background-radius: 10;" />
+      <AnchorPane layoutX="16.0" layoutY="71.0" prefHeight="185.0" prefWidth="768.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" />
       <Label layoutX="305.0" layoutY="7.0" prefHeight="30.0" prefWidth="185.0" text="      Booking Details">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <Button layoutX="14.0" layoutY="19.0" mnemonicParsing="false" onAction="#backOnAction" style="-fx-background-color: black;" text="Back" textFill="WHITE" />
-      <TableView fx:id="tblBookRecord" layoutX="9.0" layoutY="266.0" prefHeight="270.0" prefWidth="781.0">
+      <TableView fx:id="tblBookRecord" layoutX="14.0" layoutY="248.0" prefHeight="270.0" prefWidth="781.0">
         <columns>
           <TableColumn fx:id="colBorrowId" prefWidth="83.20001029968262" text="Borrow Id" />
           <TableColumn fx:id="colMemberId" prefWidth="128.00006103515625" text="Member Name" />
@@ -36,22 +37,25 @@
       <AnchorPane layoutX="213.0" layoutY="130.0" prefHeight="45.0" prefWidth="162.0" styleClass="textPane1">
          <children>
             <TextField fx:id="txtName" layoutX="6.0" layoutY="6.0" prefHeight="33.0" prefWidth="151.0" promptText="Name" style="-fx-background-color: white;" />
+            <Label layoutX="7.0" layoutY="-11.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="Name" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="30.0" layoutY="191.0" prefHeight="45.0" prefWidth="162.0" styleClass="textPane1">
          <children>
             <TextField fx:id="txtAddress" layoutX="6.0" layoutY="6.0" prefHeight="33.0" prefWidth="151.0" promptText="Address" style="-fx-background-color: white;" />
+            <Label layoutX="6.0" layoutY="-12.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="Address" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="213.0" layoutY="191.0" prefHeight="45.0" prefWidth="162.0" styleClass="textPane1">
          <children>
             <TextField fx:id="txtContact" layoutX="6.0" layoutY="6.0" prefHeight="33.0" prefWidth="151.0" promptText="Contact" style="-fx-background-color: white;" />
+            <Label layoutX="9.0" layoutY="-10.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="Contact" />
          </children>
       </AnchorPane>
       <Separator layoutX="528.0" layoutY="130.0" orientation="VERTICAL" prefHeight="104.0" prefWidth="6.0" />
       <JFXComboBox fx:id="memberIdOnTransaction" layoutX="30.0" layoutY="139.0" prefHeight="26.0" prefWidth="163.0" />
       <JFXComboBox fx:id="branchNameCmb" layoutX="397.0" layoutY="192.0" prefHeight="26.0" prefWidth="124.0" />
-      <Label layoutX="28.0" layoutY="86.0" prefHeight="26.0" prefWidth="83.0" text="Borrow ID - " textFill="#0e5ca9">
+      <Label layoutX="28.0" layoutY="86.0" prefHeight="26.0" prefWidth="105.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="Borrow ID - " textFill="#0e5ca9">
          <font>
             <Font name="System Bold" size="14.0" />  
          </font>
@@ -73,10 +77,10 @@
          </font>
       </Button>
       <TextField fx:id="borrowId" layoutX="213.0" layoutY="86.0" prefHeight="26.0" prefWidth="163.0" />
-      <Label layoutX="401.0" layoutY="111.0" text="Select Book" />
+      <Label layoutX="401.0" layoutY="111.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="Select Book" />
       <TextField fx:id="txtbookName" layoutX="546.0" layoutY="139.0" prefHeight="26.0" prefWidth="124.0" />
       <TextField fx:id="txtbranchName" layoutX="546.0" layoutY="192.0" prefHeight="26.0" prefWidth="124.0" />
-      <Label layoutX="400.0" layoutY="170.0" text="Branch Name" />
+      <Label layoutX="400.0" layoutY="170.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="Branch Name" />
       <Separator layoutX="529.0" layoutY="119.0" prefHeight="2.0" prefWidth="238.0" />
       <Label fx:id="dateLbl" layoutX="701.0" layoutY="8.0" prefHeight="26.0" prefWidth="83.0" style="-fx-background-radius: 7; -fx-background-color: D0A2F7;" text="    ">
          <font>
@@ -88,5 +92,6 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34495e" height="14.0" layoutX="-2.0" layoutY="532.0" stroke="BLACK" strokeType="INSIDE" width="810.0" />
    </children>
 </AnchorPane>

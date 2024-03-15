@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.lms.controller.LibraryBranchFormController">
@@ -20,7 +21,7 @@
       <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="595.0" layoutY="56.0" onAction="#btnOnActionAdd" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: #2ed573;" text="Add" />
       <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="595.0" layoutY="102.0" onAction="#btnOnActionUpdate" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: #feca57;" text="Update" />
       <JFXButton fx:id="btnRemove" buttonType="RAISED" layoutX="595.0" layoutY="147.0" onAction="#btnOnActionRemove" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: #ff4757;" text="Remove" />
-      <TableView fx:id="tblLibraryBranch" layoutX="11.0" layoutY="197.0" prefHeight="239.0" prefWidth="678.0">
+      <TableView fx:id="tblLibraryBranch" layoutX="11.0" layoutY="188.0" prefHeight="239.0" prefWidth="678.0">
         <columns>
           <TableColumn fx:id="colLibId" prefWidth="80.800048828125" text="Lib Id" />
           <TableColumn fx:id="colName" prefWidth="74.39996337890625" text="Name" />
@@ -36,11 +37,13 @@
       <AnchorPane layoutX="33.0" layoutY="102.0" prefHeight="45.0" prefWidth="162.0" styleClass="textPane1">
          <children>
             <TextField fx:id="txtLibId" layoutX="6.0" layoutY="6.0" onKeyReleased="#text_Field_Checker_In_LibraryBranch" prefHeight="33.0" prefWidth="151.0" promptText="Lib Id" style="-fx-background-color: white;" />
+            <Label layoutX="6.0" layoutY="-12.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="Branch ID" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="225.0" layoutY="102.0" prefHeight="45.0" prefWidth="162.0" styleClass="textPane1">
          <children>
             <TextField fx:id="txtName" layoutX="6.0" layoutY="6.0" onKeyReleased="#text_Field_Checker_In_LibraryBranch" prefHeight="33.0" prefWidth="151.0" promptText="Name" style="-fx-background-color: white;" />
+            <Label layoutX="7.0" layoutY="-12.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="Branch Name" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="420.0" layoutY="102.0" prefHeight="45.0" prefWidth="162.0" styleClass="textPane1">
@@ -48,6 +51,8 @@
             <TextField fx:id="txtLocation" layoutX="6.0" layoutY="6.0" onKeyReleased="#text_Field_Checker_In_LibraryBranch" prefHeight="33.0" prefWidth="151.0" promptText="Location" style="-fx-background-color: white;" />
          </children>
       </AnchorPane>
+      <Label layoutX="428.0" layoutY="90.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="Location" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#34495e" height="12.0" layoutY="434.0" stroke="BLACK" strokeType="INSIDE" width="700.0" />
    </children>
    <stylesheets>
       <URL value="@../assets/style/Style-001.css" />

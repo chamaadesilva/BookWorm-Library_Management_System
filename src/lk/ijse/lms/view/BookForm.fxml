@@ -12,11 +12,11 @@
 
 <AnchorPane fx:id="root" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" stylesheets="@../assets/style/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.lms.controller.BookFormController">
    <children>
-      <AnchorPane layoutX="21.0" layoutY="53.0" prefHeight="161.0" prefWidth="758.0" style="-fx-background-color: #a4b0be; -fx-background-radius: 8;">
+      <AnchorPane layoutX="21.0" layoutY="53.0" prefHeight="161.0" prefWidth="758.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8;">
          <children>
             <AnchorPane layoutX="277.0" layoutY="101.0" prefHeight="45.0" prefWidth="163.0" styleClass="textPane1">
                <children>
-                  <Label layoutY="-18.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="Genre" />
+                  <Label layoutX="8.0" layoutY="-16.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="Genre" />
                   <TextField fx:id="txtGenre" layoutX="14.0" layoutY="6.0" onKeyReleased="#text_Field_Checker_In_Book" prefHeight="33.0" prefWidth="151.0" promptText="genre" style="-fx-background-color: white;" />
                </children>
                <opaqueInsets>
@@ -25,7 +25,7 @@
             </AnchorPane>
             <AnchorPane layoutX="67.0" layoutY="101.0" prefHeight="45.0" prefWidth="162.0" styleClass="textPane1">
                <children>
-                  <Label layoutY="-16.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="Availability" />
+                  <Label layoutX="6.0" layoutY="-14.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="Availability" />
                   <TextField fx:id="txtAvailabel" layoutX="6.0" layoutY="6.0" onKeyReleased="#text_Field_Checker_In_Book" prefHeight="33.0" prefWidth="151.0" promptText="available" style="-fx-background-color: white;" />
                </children>
             </AnchorPane>
@@ -56,7 +56,7 @@
       <AnchorPane layoutX="88.0" layoutY="88.0" prefHeight="45.0" prefWidth="162.0" styleClass="textPane1">
          <children>
             <TextField fx:id="txtBookId" layoutX="6.0" layoutY="6.0" onKeyReleased="#text_Field_Checker_In_Book" prefHeight="33.0" prefWidth="151.0" promptText="Book Id" style="-fx-background-color: white;" />
-            <Label layoutX="3.0" layoutY="-16.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="BOOK ID" />
+            <Label layoutX="5.0" layoutY="-15.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="BOOK ID" />
          </children>
          <opaqueInsets>
             <Insets />
@@ -65,7 +65,7 @@
       <AnchorPane layoutX="296.0" layoutY="88.0" prefHeight="45.0" prefWidth="162.0" styleClass="textPane1">
          <children>
             <TextField fx:id="txtAuthor" layoutX="6.0" layoutY="6.0" onKeyReleased="#text_Field_Checker_In_Book" prefHeight="33.0" prefWidth="151.0" promptText="author" style="-fx-background-color: white;" />
-            <Label layoutX="2.0" layoutY="-15.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="Author" />
+            <Label layoutX="6.0" layoutY="-12.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="Author" />
          </children>
          <opaqueInsets>
             <Insets />
@@ -73,7 +73,7 @@
       </AnchorPane>
       <AnchorPane layoutX="500.0" layoutY="88.0" prefHeight="45.0" prefWidth="162.0" styleClass="textPane1">
          <children>
-            <Label layoutX="3.0" layoutY="-16.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="Title" />
+            <Label layoutX="5.0" layoutY="-16.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="Title" />
             <TextField fx:id="txtTitle" layoutX="6.0" layoutY="6.0" onKeyReleased="#text_Field_Checker_In_Book" prefHeight="33.0" prefWidth="151.0" promptText="title" style="-fx-background-color: white;" />
          </children>
          <opaqueInsets>

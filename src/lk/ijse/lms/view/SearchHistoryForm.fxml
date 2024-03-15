@@ -8,11 +8,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="525.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" stylesheets="@../assets/style/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.lms.controller.SearchHistoryFormController">
    <children>
-      <ImageView fitHeight="459.0" fitWidth="783.0" layoutX="8.0" layoutY="59.0" opacity="0.55" pickOnBounds="true">
+      <ImageView fitHeight="381.0" fitWidth="774.0" layoutX="13.0" layoutY="137.0" opacity="0.55" pickOnBounds="true">
          <image>
             <Image url="@../assets/textbooks-book-day_24911-115208.jpg" />
          </image>
@@ -23,7 +24,7 @@
          </font>
       </Label>
       <Button layoutX="16.0" layoutY="16.0" mnemonicParsing="false" onAction="#backOnAction" style="-fx-background-color: black;" text="Back" textFill="WHITE" />
-      <TableView fx:id="tblSearchHistory" layoutX="16.0" layoutY="123.0" opacity="0.82" prefHeight="381.0" prefWidth="768.0">
+      <TableView fx:id="tblSearchHistory" layoutX="16.0" layoutY="123.0" opacity="0.82" prefHeight="367.0" prefWidth="768.0">
          <columns>
             <TableColumn fx:id="colBorrowId" prefWidth="83.20001029968262" text="Borrow Id" />
             <TableColumn fx:id="colMemberId" prefWidth="128.00006103515625" text="Member Name" />
@@ -41,5 +42,6 @@
             <Image url="@../assets/icons8-search-50.png" />
          </image>
       </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c3e50" height="18.0" layoutY="499.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
    </children>
 </AnchorPane>
