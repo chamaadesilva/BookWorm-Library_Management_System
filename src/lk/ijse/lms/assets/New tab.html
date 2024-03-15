@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)chrome-extension://dlnejlppicbjfcfcedcflplfjajinajd/index.html -->
+<html lang="en" dir="auto" data-theme="dark" style="--font-size: 0.875em; --font-weight: 400; --font-weight-clock: 300; --text-shadow-alpha: 0.2; --clock-size: 1em; --searchbar-background-alpha: 0.1; --grid: &#39;time&#39; &#39;main&#39; &#39;quicklinks&#39;; --background-blur: 5px; --background-brightness: 0.72; --load-time-transition: 0ms; --links-width: 43em; --page-width: 1600px; --page-gap: 1em; --notes-width: 40em; --notes-background-alpha: 0.1;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>New tab</title>
+
+		
+		<meta name="theme-color" content="#000">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="shortcut icon" href="chrome-extension://dlnejlppicbjfcfcedcflplfjajinajd/src/assets/favicon.ico" type="image/x-icon" id="favicon">
+
+		<!-- icon -->
+		<!-- manifest -->
+		<script src="chrome-extension://dlnejlppicbjfcfcedcflplfjajinajd/src/scripts/webext-storage.js"></script>
+
+		<link rel="stylesheet" href="chrome-extension://dlnejlppicbjfcfcedcflplfjajinajd/src/styles/style.css">
+		<style type="text/css" id="styles"></style>
+		<style type="text/css" id="fontface"></style>
+
+		<script src="chrome-extension://dlnejlppicbjfcfcedcflplfjajinajd/src/scripts/main.js" defer=""></script>
+	</head>
+
+	<body class="">
+		<button id="skiptosettings" type="button">Skip to Settings</button>
+
+		<dialog id="bookmarks">
+			<div id="bookmarks-container">
+				<template id="bookmarks-folder"></template>
+				<template id="bookmarks-item"></template>
+			</div>
+			<hr>
+			<div id="bookmarks-buttons">
+				<button id="bmk_close" class="trn btn-red">Cancel</button>
+				<button id="bmk_apply" class="trn none">Select bookmarks</button>
+			</div>
+		</dialog>
+
+		<dialog id="editlink">
+			<form id="editlink-form">
+				<label id="ei_title" autofocus="">
+					<span class="trn">Title</span>
+					<input id="e_title" type="text" name="e_title" maxlength="64" autocomplete="off" placeholder="Example">
+				</label>
+
+				<label id="ei_url">
+					<span class="trn">Link</span>
+					<input id="e_url" type="text" name="e_url" maxlength="512" autocomplete="off" placeholder="https://example.com">
+				</label>
+
+				<label id="ei_icon">
+					<span class="trn">Icon</span>
+					<input id="e_iconurl" type="url" name="e_iconurl" maxlength="7600" autocomplete="off" placeholder="https://example.com/favicon.ico">
+				</label>
+
+				<hr>
+
+				<button type="submit" class="trn" id="eb_inputs">Submit from inputs</button>
+				<button type="submit" class="trn" id="eb_add-tab">Add new page</button>
+				<button type="submit" class="trn" id="eb_add-link">Add new link</button>
+				<button type="submit" class="trn" id="eb_add-folder">Create new folder</button>
+				<button type="submit" class="trn btn-red" id="eb_delete-tab">Delete page</button>
+				<button type="submit" class="trn btn-red" id="eb_delete-selected">Delete selection</button>
+				<button type="submit" class="trn btn-red" id="eb_delete-folder">Delete folder</button>
+				<button type="submit" class="trn btn-red" id="eb_delete-link">Delete link</button>
+				<button type="submit" class="trn" id="eb_remove-folder">Remove from folder</button>
+				<button type="submit" class="trn" id="eb_submit-changes">Apply changes</button>
+			</form>
+		</dialog>
+
+		<dialog id="element-mover" class="hidden">
+			<div id="grid-selection">
+				<p class="trn">Editing</p>
+				<h3 id="mover-title" class="trn">No selection</h3>
+			</div>
+
+			<div>
+				<p class="trn">Grid position</p>
+				<div id="grid-mover" class="mover">
+					<button type="button" data-row="-1">
+						<i class="chevron rotate-half"></i>
+					</button>
+					<div>
+						<button type="button" data-col="-1">
+							<i class="chevron rotate-quart"></i>
+						</button>
+						<button type="button" data-col="1">
+							<i class="chevron rotate-quart-r"></i>
+						</button>
+					</div>
+					<button type="button" data-row="1">
+						<i class="chevron"></i>
+					</button>
+				</div>
+			</div>
+			<div id="grid-spanner-container">
+				<button class="grid-spanner trn" id="grid-span-rows">Fill row</button>
+				<button class="grid-spanner trn" id="grid-span-cols">Fill column</button>
+			</div>
+			<div>
+				<p class="trn">Box alignment</p>
+				<div id="box-alignment-mover" class="mover">
+					<button type="button" data-align="baseline baseline">
+						<i class="box-corner"></i>
+					</button>
+					<button type="button" data-align="baseline center">
+						<i class="box-side rotate-half"></i>
+					</button>
+					<button type="button" data-align="baseline end">
+						<i class="box-corner rotate-quart"></i>
+					</button>
+					<button type="button" data-align="center baseline">
+						<i class="box-side rotate-quart"></i>
+					</button>
+					<button type="button" data-align="">
+						<i class="box-center"></i>
+					</button>
+					<button type="button" data-align="center end">
+						<i class="box-side rotate-quart-r"></i>
+					</button>
+					<button type="button" data-align="end baseline">
+						<i class="box-corner rotate-quart-r"></i>
+					</button>
+					<button type="button" data-align="end center">
+						<i class="box-side"></i>
+					</button>
+					<button type="button" data-align="end end">
+						<i class="box-corner rotate-half"></i>
+					</button>
+				</div>
+			</div>
+			<div>
+				<p class="trn">Text alignment</p>
+				<div id="text-alignment-mover" class="mover">
+					<button data-align="left">
+						<i class="text-left"></i>
+					</button>
+					<button data-align="">
+						<i class="text-center"></i>
+					</button>
+					<button data-align="right">
+						<i class="text-right"></i>
+					</button>
+				</div>
+			</div>
+
+			<div id="close-mover-wrapper">
+				<hr>
+
+				<button id="b_resetlayout" class="trn btn-red">Reset layout</button>
+				<button id="close-mover" class="trn">Done</button>
+			</div>
+		</dialog>
+
+		<div id="background_overlay" style="opacity: 1;">
+			<div id="background" style="opacity: 1; background-image: url(&quot;https://images.unsplash.com/photo-1523556452962-72201b25b374?ixid=M3w4ODczOHwwfDF8cmFuZG9tfHx8fHx8fHx8MTcxMDQ5NDI5NXw&amp;ixlib=rb-4.0.3&amp;w=1536&amp;h=864&amp;dpr=1.25&amp;auto=format&amp;q=75&amp;fit=crop&quot;);"></div>
+			<div id="background-bis"></div>
+		</div>
+
+		<main id="interface">
+			<div id="time" class="seconds">
+				<div id="time-container" data-hide="clock">
+					<h1 id="digital">
+						<span id="digital-hh-leading-zero">0</span><span id="digital-hh">15</span><span id="digital-hh-separator">:</span><span id="digital-mm">56</span><span id="digital-mm-separator">:</span><span id="digital-ss">20</span><span id="digital-am-pm"></span>
+					</h1>
+					
+					<div id="analog" class="round">
+						<div id="analog-face">
+							<span></span>
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+
+						<div id="analog-center"></div>
+						<span id="analog-hours"></span>
+						<span id="analog-minutes"></span>
+						<span id="analog-seconds"></span>
+					</div>
+				</div>
+
+				<p id="date" data-hide="date" class="eu">
+					<span id="date-aa">Friday</span><span id="date-aa-separator"></span><span id="date-bb">15</span><span id="date-bb-separator"></span><span id="date-cc">March</span>
+				</p>
+			</div>
+
+			<div id="main" class="">
+				<h2 id="greetings" data-hide="greetings" style="text-transform: none;">
+					<span id="greeting">Good afternoon, </span>
+					<span id="greeting-name">mGunawardhana</span>
+				</h2>
+
+				<a id="weather" class="" rel="noreferrer">
+					<div id="description" data-hide="weatherdesc">
+						<p id="current">Scattered clouds. It is currently 31°</p>
+						
+					</div>
+
+					<div id="tempContainer" data-hide="weathericon">
+						<img id="weather-icon" alt="" draggable="false" fetchpriority="high" src="chrome-extension://dlnejlppicbjfcfcedcflplfjajinajd/src/assets/weather/day/brokenclouds.png">
+						<p>31°</p>
+					</div>
+				</a>
+			</div>
+
+			<div id="notes_container" class="hidden"><div id="pocket-editor"><div class="line h2"><h2 contenteditable="true">Edit this note !</h2></div><div class="line todo"><span class="todo-marker"><input type="checkbox" aria-label="todo list checkbox"></span><p contenteditable="true">"# ", "## " or "### " to create titles</p></div><div class="line todo"><span class="todo-marker"><input type="checkbox" aria-label="todo list checkbox"></span><p contenteditable="true">"- " or "[ ] " to add a list or checkbox</p></div></div></div>
+
+			<form id="sb_container" class="hidden" data-engine="google" data-request="" data-newtab="false" data-suggestions="true">
+				<div id="searchbar-wrapper">
+					<input id="searchbar" type="text" name="searchbar" autocomplete="off" spellcheck="false" aria-label="Search bar" placeholder="">
+
+					<div id="sb-buttons">
+						<button id="sb_empty" aria-label="Empty search" type="button" disabled="">✕</button>
+
+						<hr>
+
+						<button id="sb_submit" aria-label="Submit search" type="submit" disabled="">
+							<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNDk1IDQ2NiAzODUgMzU2YTIwOSAyMDkgMCAwIDAtMTQtMjgzIDIwOSAyMDkgMCAwIDAtMjk4IDAgMjA5IDIwOSAwIDAgMCAwIDI5OCAyMTAgMjEwIDAgMCAwIDI4MyAxNGwxMTAgMTEwYTIwIDIwIDAgMSAwIDI5LTI5ek0xMDIgMzQyYTE2OSAxNjkgMCAwIDEgMC0yNDAgMTY5IDE2OSAwIDAgMSAyNDAgMCAxNjkgMTY5IDAgMCAxIDAgMjQwIDE2OSAxNjkgMCAwIDEtMjQwIDB6Ii8+PC9zdmc+" class="default-search-icon" draggable="false" alt="">
+						</button>
+					</div>
+				</div>
+
+				<ul id="sb-suggestions"></ul>
+			</form>
+
+			<div id="linkblocks" class="large">
+				<ul id="link-list">
+					<template id="link-elem"></template>
+					<template id="link-folder"></template>
+				</ul>
+
+				<div id="link-title">
+					<div id="folder-title">
+						<button class="selected">Folder</button>
+					</div>
+
+					<div id="tab-title">
+						<button id="default-tab-title" class="trn selected">Default page</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="quotes_container" class="hidden">
+				<p id="quote">The best way to predict the future is to create it.</p>
+				<p id="author">Peter Drucker</p>
+			</div>
+		</main>
+
+		<div id="creditContainer" class="shown" style="opacity: 0">
+			<div id="credit"><p class="exif">Canon EOS 70D - f/10.0 1/125s 100ISO 10.0mm</p><a href="https://unsplash.com/photos/mountain-with-snow-at-daytime-CfhTyTQTSCU?utm_source=Bonjourr&amp;utm_medium=referral">San Vigilio, Italy</a><span> - </span><a href="https://unsplash.com/@eberhardgross?utm_source=Bonjourr&amp;utm_medium=referral">Eberhard 🖐 Grossgasteiger</a></div>
+		</div>
+
+		<div id="showSettings" data-hide="settingsicon">
+			<button aria-label="Toggle settings menu">
+				<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTkuNjYiIGhlaWdodD0iMTk5LjkzIiB2aWV3Qm94PSIwIDAgNTIuODMgNTIuOSI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTI5LjczIDUyLjU3Yy0uMjYtLjItLjkzLTEuNDEtMS40OC0yLjcxLTEuMS0yLjU3LTEuNDItMi45My0yLjQyLTIuNjgtLjUxLjEzLS44OS42Ni0xLjY3IDIuMzYtMS4yIDIuNTktMS42IDMuMTEtMi40IDMuMTEtMS4xIDAtMS4zNS0uNTgtMS41MS0zLjQ4LS4xMy0yLjM4LS4yMy0yLjc4LS43My0zLjItLjMyLS4yNS0uNy0uNDYtLjg0LS40NnMtMS4yNS45NS0yLjQ2IDIuMTJjLTEuMjIgMS4xNi0yLjM4IDIuMTEtMi41OSAyLjExLS41MiAwLTEuMjUtLjg2LTEuMjUtMS40OSAwLS4yOC4zLTEuNTYuNjctMi44NCAxLjEyLTMuODQuNDYtNC4zMS0zLjQ3LTIuNTQtMi4xNS45OC0yLjYgMS4xLTMuMTYuODMtMS4wOC0uNDktLjg1LTEuNDUuOTMtMy45IDEuNzItMi4zNyAxLjkxLTMuMDcgMS0zLjY2LS41LS4zLTEuMDYtLjMzLTMuMi0uMTEtMi45LjI5LTMuMjcuMjItMy42LS42NC0uMzMtLjg5LjA1LTEuMzcgMi4yLTIuODMgMS4wNy0uNzIgMi4xNC0xLjUgMi4zOC0xLjc0IDEuMS0xLjEuMTYtMS45Ny0yLjk3LTIuNzhDLjM4IDI3LjMzLS4yOCAyNi44Mi4xIDI1LjcyYy4yMy0uNjQuNTMtLjc5IDIuOTctMS40MiAxLjUtLjQgMi45LS44NSAzLjEtMS4wMy43Ny0uNjMuNDYtMS41NC0uODQtMi40NC0yLjM1LTEuNjItMy44LTIuODUtMy44LTMuMjEgMC0uMi4yMi0uNjQuNS0uOTcuNDgtLjYuNS0uNiAzLjM1LS4zIDIuNTYuMjkgMi45LjI3IDMuMzQtLjEyLjI3LS4yNC40OC0uNjQuNDgtLjg5IDAtLjI0LS43LTEuNS0xLjU4LTIuOC0uODgtMS4yOS0xLjU5LTIuNTMtMS41OS0yLjc3IDAtLjQ4LjgtMS4zIDEuMjctMS4zLjE3IDAgMS40My41NiAyLjggMS4yNCAyLjIyIDEuMSAyLjU5IDEuMiAzLjE5LjkzLjg0LS4zOC44Ni0uOTYuMTMtMy44Mi0uNjgtMi42OC0uNjEtMy40Mi4zNi0zLjc2LjY4LS4yNC44Ny0uMTIgMi45MSAxLjkxIDEuMiAxLjIgMi4zNyAyLjE3IDIuNiAyLjE3Ljg4IDAgMS4yNi0uODkgMS41NC0zLjdDMjEuMTMuNTkgMjEuNCAwIDIyLjQ0IDBjLjY3IDAgMS4xNy43MSAyLjI0IDMuMjMgMS40OCAzLjQ2IDIuMzggMy41IDMuOTguMTRDMjkuOTUuNjUgMzAuMjYuMjcgMzEuMi4yN2MxIDAgMS4xOS40NiAxLjM4IDMuNTMuMDkgMS40NC4zIDIuNzguNDYgMi45OC42OC44MiAxLjYxLjQgMy43LTEuNjIgMS4xMi0xLjEgMi4xOC0xLjk4IDIuMzUtMS45OC4xNyAwIC41NC4xMi44Mi4yNy43LjM4LjY2IDEuMzktLjIgNC4yMy0uNjggMi4zLS42OCAyLjM4LS4yMSAyLjkuNjYuNzQgMS4wNi42OCAzLjY3LS41MyAyLjQzLTEuMTIgMy4wNC0xLjI1IDMuNTUtLjc0LjY0LjY0LjMgMS42NC0xLjMgMy44NC0xLjI4IDEuNzgtMS41NyAyLjM1LTEuNDQgMi44OC4yMy45LjkgMS4wOSAzLjE0Ljg2IDMuMjUtLjMyIDMuNTctLjI5IDQuMDUuNDQuMzguNi4zOS43Mi4wMyAxLjI3LS4yMi4zNC0xLjM1IDEuMjQtMi41MiAyLTEuMTYuNzctMi4xNyAxLjYtMi4yMyAxLjg1LS4yNS45Mi4yNiAxLjU5IDEuNDQgMS45IDMuOTMgMS4wMiA0LjcgMS4zMyA0Ljg2IDEuOTYuMyAxLjI0LS4yMiAxLjYzLTMuMDUgMi4yOC00LjEuOTItNC40OCAxLjkzLTEuNTQgMy45NSAzLjE1IDIuMTcgMy42MyAyLjg5IDIuNTkgMy44NC0uNDguNDMtLjc0LjQ1LTMuMzQuMTUtMi41NS0uMjgtMi44NS0uMjctMy4zLjE0LS4yOC4yNS0uNS42NS0uNS44OCAwIC4yNC43IDEuNDkgMS41OCAyLjc4Ljg3IDEuMjkgMS41OSAyLjU2IDEuNTkgMi44M3MtLjMxLjY5LS42OS45M2MtLjY3LjQ0LS43NC40Mi0zLjMtLjgzLTIuMy0xLjE0LTIuNjgtMS4yNS0zLjI4LS45OC0uODQuMzgtLjg3IDEuMDktLjEzIDMuNzQuNzEgMi41Ni42MiAzLjUtLjM2IDMuODQtLjcuMjUtLjg2LjE0LTIuODgtMS45MS0zLjEtMy4xNi0zLjctMi45My00LjE0IDEuNTItLjIxIDIuMS0uMzkgMi44NS0uNzQgMy4xMS0uNTguNDMtLjkzLjQyLTEuNTMtLjAxem0uNzUtMTAuMjNjMS4xMi0uMjkgMi43OC0uOTEgMy42OC0xLjM5YTIwLjE2IDIwLjE2IDAgMCAwIDYuMjMtNS44N2MxLjE2LTIuMzcgMi4yNC00LjMzIDIuMDItNi45bC03LjQzLS4wN2MtNi44Mi0uMDctNy40Ni0uMDMtNy44NS40LS43Ny44Ni03LjA4IDEyLjAxLTcuMDggMTIuNTEgMCAxLjU3IDYuMzQgMi4zNyAxMC40MyAxLjMyem0tOS43My05LjEzYzEuOTYtMy40IDMuNTMtNi4zOCAzLjUzLTYuNzUgMC0xLjAzLTYuOTEtMTIuODItNy41Ny0xMi45MS0uNzQtLjExLTMuNjggMy4wNS00LjggNS4xNmExNi45OCAxNi45OCAwIDAgMC0uMDIgMTUuNDZjMS4xMiAyLjEgNC4wOCA1LjMgNC44IDUuMi4zOS0uMDYgMS41LTEuNzYgNC4wNi02LjE2em0yMS4xOC0xMi4xM0ExNyAxNyAwIDAgMCAzMC4xIDEwLjQyYy0zLjUzLS44OS05LjgtLjAyLTEwIDEuMzgtLjA4LjUgNi4wNSAxMS40OCA3LjAzIDEyLjYxLjM4LjQzIDEuMDIuNDYgNy44NC40bDcuNDMtLjA3Yy4xOS0xLjI3LS4xLTIuNi0uNDgtMy42NnoiLz48L3N2Zz4=" alt="" draggable="false">
+			</button>
+		</div>
+
+		<template id="popup-template"></template>
+	
+
+<aside id="settings" class="init all"><div id="mobile-drag-zone">
+	<hr>
+</div>
+
+<div class="settings-title">
+	<h2 class="trn">General</h2>
+</div>
+
+<div class="param">
+	<div class="showall wrapper">
+		<label for="i_showall" class="trn">Show all settings</label>
+		<input id="i_showall" class="switch opt-hider" type="checkbox">
+	</div>
+
+	<hr>
+
+	<div class="choose_language wrapper">
+		<label for="i_lang" class="trn">Language</label>
+		<select id="i_lang" class="lang"><option value="en">English</option><option value="fr">Français</option><option value="sk">Slovenský</option><option value="sv">Svenska</option><option value="pl">Polski</option><option value="pt_BR">Português (Brasil)</option><option value="pt_PT">Português (Portugal)</option><option value="nl">Nederlandse</option><option value="ro">Română</option><option value="ru">Русский</option><option value="zh_CN">简体中文</option><option value="zh_HK">繁體中文</option><option value="jp">日本語</option><option value="de">Deutsch</option><option value="it">Italiano</option><option value="es_ES">Español</option><option value="tr">Türkçe</option><option value="uk">Українська</option><option value="id">Indonesia</option><option value="da">Dansk</option><option value="fi">Suomi</option><option value="hu">Magyar</option><option value="sr">Српски (ћирилица)</option><option value="sr_YU">Srpski (latinica)</option><option value="gr">Ελληνικά</option><option value="fa">فارسی</option><option value="vi">Tiếng Việt</option><option value="ar">العربية</option></select>
+	</div>
+
+	<div class="as as_visuals">
+		<hr>
+
+		<div class="darkmode wrapper">
+			<label for="i_dark" class="trn">Dark mode</label>
+			<select id="i_dark" class="theme">
+				<option value="system" class="trn">System</option>
+				<option value="auto" class="trn">At night</option>
+				<option value="enable" class="trn">Enabled</option>
+				<option value="disable" class="trn">Disabled</option>
+			</select>
+		</div>
+
+		<hr>
+
+		<div class="wrapper" id="tabtitle">
+			<span>
+				<span class="trn">Tab appearance</span>
+				<button class="tooltip tttab opt-hider" aria-label="Tips on tab appearance">?</button>
+			</span>
+
+			<div>
+				<input type="text" name="favicon" id="i_favicon" maxlength="2" placeholder="🌤" aria-label="Tab favicon">
+				<input type="text" name="tabtitle" id="i_tabtitle" maxlength="80" placeholder="New tab" aria-label="Tab title" autocomplete="off" spellcheck="false">
+			</div>
+		</div>
+
+		<div class="tooltiptext tttab">
+			<span class="trn">The icon and title that appear on your tab. You can put any emoji.</span>
+		</div>
+
+		<hr>
+
+		<div class="settingshide wrapper">
+			<label for="i_settingshide" class="trn">Hide settings icon</label>
+			<input id="i_settingshide" class="switch" type="checkbox">
+		</div>
+	</div>
+</div>
+
+<div class="settings-title">
+	<h2 class="trn">Background</h2>
+</div>
+
+<div class="param">
+	<div class="wrapper">
+		<label for="i_type" class="trn">Background type</label>
+		<select id="i_type">
+			<option value="unsplash" class="trn">Unsplash</option>
+			<option value="local" class="trn">Local file</option>
+		</select>
+	</div>
+
+	<hr>
+
+	<div class="wrapper freq_wrap">
+		<label for="i_freq" class="trn">Frequency</label>
+		<div>
+			<select id="i_freq">
+				<option value="tabs" class="trn">Every tab</option>
+				<option value="hour" class="trn">Every hour</option>
+				<option value="period" class="trn">Daylight</option>
+				<option value="day" class="trn">Every day</option>
+				<option value="pause" class="trn">Pause</option>
+			</select>
+			<button id="i_refresh" class="input-btn refresh-btn" aria-label="Choose another background">
+				<span>↻</span>
+			</button>
+		</div>
+	</div>
+
+	<div id="unsplash_options" class="dropdown shown">
+		<div class="as as_collection">
+			<hr>
+
+			<div class="wrapper">
+				<span>
+					<label for="i_collection" class="trn">Unsplash collection</label>
+					<button class="tooltip ttcoll opt-hider" aria-label="Tips on Unsplash collections">?</button>
+				</span>
+
+				<div class="superinput">
+					<input type="text" name="collection" id="i_collection" autocomplete="off" placeholder="2nVzlQADDIE" maxlength="256" spellcheck="false" autocorrect="off" autocapitalize="off">
+					<span class="si-status"><i></i></span>
+				</div>
+			</div>
+
+			<p class="tooltiptext ttcoll">
+				<span class="trn">Type the collection ID from its URL, add more by separating them with a comma.</span>
+				<a class="trn" href="https://bonjourr.fr/docs/overview/#custom-unsplash-collection" rel="noreferrer noopener" target="_blank" tabindex="-1">Learn more</a>
+			</p>
+		</div>
+	</div>
+
+	<div id="local_options" class="dropdown">
+		<hr>
+
+		<label class="uploadContainer">
+			<p class="trn">Upload background here</p>
+			<input id="i_bgfile" type="file" name="background_file" multiple="" tabindex="-1">
+		</label>
+
+		<div id="fileContainer"></div>
+
+		<div id="thumbnail-show-buttons">
+			<button class="inline-btn" id="b_thumbnail-more" aria-label="Show 9 more backgrounds" tabindex="-1">Show more</button>
+			<button class="inline-btn" id="b_thumbnail-all" aria-label="Show all backgrounds" tabindex="-1">Show all</button>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="wrapper">
+		<label for="i_blur" class="trn">Blur intensity</label>
+		<input id="i_blur" type="range" name="background_blur" min="0" max="50" value="0" step="1" class="range">
+	</div>
+
+	<hr>
+
+	<div class="wrapper">
+		<label for="i_bright" class="trn">Brightness</label>
+		<input id="i_bright" type="range" class="range" name="background_bright" min="0" max="1" value=".80" step=".01">
+	</div>
+</div>
+
+<div class="settings-title">
+	<h2 class="trn">Quick Links</h2>
+
+	<button class="tooltip ttlinks opt-hider" aria-label="Tips on Quick Links">?</button>
+
+	<p class="tooltiptext ttlinks">
+		<span class="trn">These are Bonjourr's bookmarks. </span>
+		<span class="trn instructions">Edit your Quick Links by right clicking the icon.</span>
+		<a class="trn" href="https://bonjourr.fr/docs/overview/#quick-links" rel="noreferrer noopener" target="_blank" tabindex="-1">Learn more</a>
+	</p>
+</div>
+
+<div class="param">
+	<div class="activate_quicklinks wrapper">
+		<label for="i_quicklinks" class="trn">Enable</label>
+		<input id="i_quicklinks" class="switch opt-hider" type="checkbox">
+	</div>
+
+	<div id="quicklinks_options" class="dropdown shown">
+		<hr>
+
+		<div class="wrapper">
+			<label for="i_addlink" class="trn">Add link</label>
+			<form id="addlink-inputs">
+				<input type="text" name="addlink-title" id="i_addlink-title" maxlength="64" placeholder="Title" aria-label="Add title to new link">
+
+				<input type="text" name="addlink-url" id="i_addlink-url" minlength="3" maxlength="512" placeholder="example.com" aria-label="Add URL to new link" autocomplete="off" spellcheck="false" required="true">
+
+				<button type="submit" id="i_addlink" class="input-btn">
+					<span>✓</span>
+				</button>
+			</form>
+		</div>
+
+		<div id="importbookmarks">
+			<hr>
+
+			<div class="wrapper">
+				<label for="b_importbookmarks" class="trn">Import bookmarks</label>
+				<div>
+					<button id="b_importbookmarks" class="param-btn trn">Import</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="as as_link">
+			<div id="syncbookmarks">
+				<hr>
+
+				<div class="wrapper">
+					<label for="i_syncbookmarks" class="trn">Sync new bookmarks</label>
+					<input id="i_syncbookmarks" class="switch" type="checkbox">
+				</div>
+			</div>
+
+			<hr>
+
+			<div class="wrapper">
+				<span>
+					<label for="i_linktabs" class="trn">Link pages</label>
+					<button class="tooltip ttpages opt-hider" aria-label="Tips on Links pages">?</button>
+				</span>
+				<input id="i_linktabs" class="switch" type="checkbox">
+			</div>
+
+			<p class="tooltiptext ttpages">
+				<span class="trn">Organize your links even more with pages. Right click next to a page to add another.</span>
+				<a class="trn" href="https://bonjourr.fr/docs/overview/#quick-links" rel="noreferrer noopener" target="_blank" tabindex="-1">Learn more</a>
+			</p>
+
+			<hr>
+
+			<div class="linknewtab wrapper">
+				<label for="i_linknewtab" class="trn">Open in new tab</label>
+				<input id="i_linknewtab" class="switch" type="checkbox">
+			</div>
+
+			<hr>
+
+			<div class="wrapper">
+				<label for="i_row" class="trn">Links per row</label>
+				<input id="i_row" type="range" name="i_row" min="1" max="16" step="1" value="8" class="range">
+			</div>
+
+			<hr>
+
+			<div class="linkstyle wrapper">
+				<label for="i_linkstyle" class="trn">Style</label>
+				<select id="i_linkstyle">
+					<option value="large" class="trn">Large</option>
+					<option value="medium" class="trn">Medium</option>
+					<option value="small" class="trn">Small</option>
+					<option value="inline" class="trn">Inline</option>
+					<option value="text" class="trn">Text</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="settings-title">
+	<h2 class="trn">Time &amp; Date</h2>
+</div>
+
+<div class="param">
+	<div class="wrapper">
+		<label for="i_time" class="trn">Enable</label>
+		<input id="i_time" class="switch opt-hider" type="checkbox">
+	</div>
+
+	<div id="time_options" class="dropdown shown">
+		<hr>
+
+		<div class="analog wrapper">
+			<label for="i_analog" class="trn">Analog clock</label>
+			<input id="i_analog" class="switch opt-hider" type="checkbox">
+		</div>
+
+		<hr>
+
+		<div id="clocktype_options" class="as as_clocktype dropdown">
+			<div id="analog_options" class="dropdown">
+				<div id="w_clockface" class="wrapper">
+					<label for="i_clockface" class="trn">Clock face</label>
+					<select id="i_clockface" class="" tabindex="-1">
+						<option value="none" class="trn">None</option>
+						<option value="number" class="trn">Numbers</option>
+						<option value="roman" class="trn">Romans</option>
+						<option value="marks" class="trn">Marks</option>
+					</select>
+				</div>
+
+				<hr>
+
+				<div id="w_clockstyle" class="wrapper">
+					<label for="i_clockstyle" class="trn">Clock style</label>
+					<select id="i_clockstyle" class="" tabindex="-1">
+						<option value="round" class="trn">Round</option>
+						<option value="square" class="trn">Square</option>
+						<option value="transparent" class="trn">Transparent</option>
+					</select>
+				</div>
+			</div>
+
+			<div id="digital_options" class="dropdown shown">
+				<div id="w_ampm" class="wrapper">
+					<label for="i_ampm" class="trn">12-Hour Time</label>
+					<input id="i_ampm" class="switch" type="checkbox">
+				</div>
+			</div>
+
+			<hr>
+		</div>
+
+		<div class="seconds wrapper">
+			<label for="i_seconds" class="trn">Show Seconds</label>
+			<input id="i_seconds" class="switch" type="checkbox">
+		</div>
+
+		<hr>
+
+		<div class="wrapper">
+			<label for="i_dateformat" class="trn">Date format</label>
+			<select id="i_dateformat">
+				<option value="eu" class="trn">Day date month</option>
+				<option value="us" class="trn">Day, month date</option>
+				<option value="cn" class="trn">Month date day</option>
+			</select>
+		</div>
+
+		<div class="as as_timedate">
+			<hr>
+
+			<div class="wrapper">
+				<label for="i_clocksize" class="trn">Clock size</label>
+				<input id="i_clocksize" name="i_clocksize" type="range" min="0.25" max="2.25" step=".125" value="1" class="range">
+			</div>
+
+			<hr>
+
+			<div class="wrapper">
+				<label for="i_timezone" class="trn">Time zone</label>
+				<select id="i_timezone" class="">
+					<option value="auto" class="trn">Automatic</option>
+					<option value="-10">UTC/HST -10 (Honolulu)</option>
+					<option value="-9">UTC/AKST -9 (Ancorage)</option>
+					<option value="-8">UTC/PST -8 (Vancouver, Los Angeles)</option>
+					<option value="-7">UTC/MST -7 (Phoenix)</option>
+					<option value="-6">UTC/CST -6 (Mexico, Houston)</option>
+					<option value="-5">UTC/EST -5 (Montreal, New York, Panama)</option>
+					<option value="-4">UTC/AST -4 (Halifax, Caracas)</option>
+					<option value="-3">UTC/CLST -3 (Sao Paulo, Santiago)</option>
+					<option value="0">UTC/GMT (London, Lisboa, Reykjavik)</option>
+					<option value="+1">UTC/CET +1 (Paris, Madrid, Amsterdam, Stockholm)</option>
+					<option value="+2">UTC/EET +2 (Helsinki, Bucharest, Athens, Cairo)</option>
+					<option value="+3">UTC/MSK +3 (Moscow, Istanbul)</option>
+					<option value="+3.30">UTC/GMT +3:30 (Iran)</option>
+					<option value="+4">UTC/AST +4 (Tehran, Doha)</option>
+					<option value="+4.30">UTC/GMT +4.30 (Afghanistan)</option>
+					<option value="+5">UTC/PKT +5 (Karachi)</option>
+					<option value="+5.30">UTC/GMT +5:30 (India)</option>
+					<option value="+5.45">UTC/GMT +5:45 (Nepal)</option>
+					<option value="+6">UTC/IST +6 (Mumbai)</option>
+					<option value="+6.30">UTC/GMT +6:30 (Burma)</option>
+					<option value="+7">UTC/ICT +7 (Bangkok, Jakarta)</option>
+					<option value="+8">UTC/CST +8 (Shanghai, Perth)</option>
+					<option value="+8.30">UTC/GMT +8:30 (North Korea)</option>
+					<option value="+9">UTC/KST +9 (Seoul, Tokyo)</option>
+					<option value="+10">UTC/AEST +10 (Brisbane)</option>
+					<option value="+11">UTC/AEDT +11 (Canberra)</option>
+					<option value="+12">UTC/NZDT +12 (Wellington)</option>
+				</select>
+			</div>
+
+			<hr>
+
+			<div class="wrapper">
+				<label for="i_timehide" class="trn">Show</label>
+				<select id="i_timehide">
+					<option value="all" class="trn">Clock and date</option>
+					<option value="date" class="trn">Clock only</option>
+					<option value="clock" class="trn">Date only</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="settings-title">
+	<h2 class="trn">Weather &amp; Greetings</h2>
+</div>
+
+<div class="param">
+	<div class="wrapper">
+		<label for="i_main" class="trn">Enable</label>
+		<input id="i_main" class="switch opt-hider" type="checkbox">
+	</div>
+
+	<div id="main_options" class="dropdown shown">
+		<hr>
+
+		<div class="w_auto wrapper">
+			<label for="i_geol" class="trn">Geolocation</label>
+			<select id="i_geol">
+				<option value="off" class="trn">Off</option>
+				<option value="approximate" class="trn">Approximate</option>
+				<option value="precise" class="trn">Precise</option>
+			</select>
+		</div>
+
+		<div id="sett_city" class="dropdown">
+			<select id="i_ccode" class="countrycode" aria-label="Country location" tabindex="-1">
+				<option value="AF">Afghanistan</option>
+				<option value="AL">Albania</option>
+				<option value="DZ">Algeria</option>
+				<option value="AD">Andorra</option>
+				<option value="AO">Angola</option>
+				<option value="AR">Argentina</option>
+				<option value="AM">Armenia</option>
+				<option value="AU">Australia</option>
+				<option value="AT">Austria</option>
+				<option value="AZ">Azerbaijan</option>
+				<option value="BS">Bahamas</option>
+				<option value="BH">Bahrain</option>
+				<option value="BD">Bangladesh</option>
+				<option value="BY">Belarus</option>
+				<option value="BE">Belgium</option>
+				<option value="BZ">Belize</option>
+				<option value="BJ">Benin</option>
+				<option value="BT">Bhutan</option>
+				<option value="BO">Bolivia, Plurinational State of</option>
+				<option value="BA">Bosnia and Herzegovina</option>
+				<option value="BW">Botswana</option>
+				<option value="BR">Brazil</option>
+				<option value="BN">Brunei Darussalam</option>
+				<option value="BG">Bulgaria</option>
+				<option value="BF">Burkina Faso</option>
+				<option value="BI">Burundi</option>
+				<option value="KH">Cambodia</option>
+				<option value="CM">Cameroon</option>
+				<option value="CA">Canada</option>
+				<option value="CF">Central African Republic</option>
+				<option value="TD">Chad</option>
+				<option value="CL">Chile</option>
+				<option value="CN">China</option>
+				<option value="CO">Colombia</option>
+				<option value="CG">Congo</option>
+				<option value="CD">Congo, the Democratic Republic of the</option>
+				<option value="CR">Costa Rica</option>
+				<option value="CI">Côte d'Ivoire</option>
+				<option value="HR">Croatia</option>
+				<option value="CU">Cuba</option>
+				<option value="CY">Cyprus</option>
+				<option value="CZ">Czech Republic</option>
+				<option value="DK">Denmark</option>
+				<option value="DJ">Djibouti</option>
+				<option value="DM">Dominica</option>
+				<option value="DO">Dominican Republic</option>
+				<option value="EC">Ecuador</option>
+				<option value="EG">Egypt</option>
+				<option value="SV">El Salvador</option>
+				<option value="GQ">Equatorial Guinea</option>
+				<option value="ER">Eritrea</option>
+				<option value="EE">Estonia</option>
+				<option value="ET">Ethiopia</option>
+				<option value="FJ">Fiji</option>
+				<option value="FI">Finland</option>
+				<option value="FR">France</option>
+				<option value="GF">French Guiana</option>
+				<option value="PF">French Polynesia</option>
+				<option value="GA">Gabon</option>
+				<option value="GM">Gambia</option>
+				<option value="GE">Georgia</option>
+				<option value="DE">Germany</option>
+				<option value="GH">Ghana</option>
+				<option value="GR">Greece</option>
+				<option value="GD">Grenada</option>
+				<option value="GP">Guadeloupe</option>
+				<option value="GT">Guatemala</option>
+				<option value="GN">Guinea</option>
+				<option value="GW">Guinea-Bissau</option>
+				<option value="GY">Guyana</option>
+				<option value="HT">Haiti</option>
+				<option value="HN">Honduras</option>
+				<option value="HK">Hong Kong</option>
+				<option value="HU">Hungary</option>
+				<option value="IS">Iceland</option>
+				<option value="IN">India</option>
+				<option value="ID">Indonesia</option>
+				<option value="IR">Iran, Islamic Republic of</option>
+				<option value="IQ">Iraq</option>
+				<option value="IE">Ireland</option>
+				<option value="IL">Israel</option>
+				<option value="IT">Italy</option>
+				<option value="JM">Jamaica</option>
+				<option value="JP">Japan</option>
+				<option value="JO">Jordan</option>
+				<option value="KZ">Kazakhstan</option>
+				<option value="KE">Kenya</option>
+				<option value="KI">Kiribati</option>
+				<option value="KR">Korea, Republic of</option>
+				<option value="KW">Kuwait</option>
+				<option value="KG">Kyrgyzstan</option>
+				<option value="LA">Lao People's Democratic Republic</option>
+				<option value="LV">Latvia</option>
+				<option value="LB">Lebanon</option>
+				<option value="LS">Lesotho</option>
+				<option value="LR">Liberia</option>
+				<option value="LY">Libya</option>
+				<option value="LT">Lithuania</option>
+				<option value="LU">Luxembourg</option>
+				<option value="MO">Macao</option>
+				<option value="MK">Macedonia, the Former Yugoslav Republic of</option>
+				<option value="MG">Madagascar</option>
+				<option value="MW">Malawi</option>
+				<option value="MY">Malaysia</option>
+				<option value="MV">Maldives</option>
+				<option value="ML">Mali</option>
+				<option value="MT">Malta</option>
+				<option value="MQ">Martinique</option>
+				<option value="MR">Mauritania</option>
+				<option value="MU">Mauritius</option>
+				<option value="YT">Mayotte</option>
+				<option value="MX">Mexico</option>
+				<option value="FM">Micronesia, Federated States of</option>
+				<option value="MD">Moldova, Republic of</option>
+				<option value="MC">Monaco</option>
+				<option value="MN">Mongolia</option>
+				<option value="ME">Montenegro</option>
+				<option value="MA">Morocco</option>
+				<option value="MZ">Mozambique</option>
+				<option value="MM">Myanmar</option>
+				<option value="NA">Namibia</option>
+				<option value="NP">Nepal</option>
+				<option value="NL">Netherlands</option>
+				<option value="NC">New Caledonia</option>
+				<option value="NZ">New Zealand</option>
+				<option value="NI">Nicaragua</option>
+				<option value="NE">Niger</option>
+				<option value="NG">Nigeria</option>
+				<option value="NO">Norway</option>
+				<option value="OM">Oman</option>
+				<option value="PK">Pakistan</option>
+				<option value="PS">Palestine, State of</option>
+				<option value="PA">Panama</option>
+				<option value="PG">Papua New Guinea</option>
+				<option value="PY">Paraguay</option>
+				<option value="PE">Peru</option>
+				<option value="PH">Philippines</option>
+				<option value="PL">Poland</option>
+				<option value="PT">Portugal</option>
+				<option value="PR">Puerto Rico</option>
+				<option value="QA">Qatar</option>
+				<option value="RE">Réunion</option>
+				<option value="RO">Romania</option>
+				<option value="RU">Russian Federation</option>
+				<option value="RW">Rwanda</option>
+				<option value="WS">Samoa</option>
+				<option value="SA">Saudi Arabia</option>
+				<option value="SN">Senegal</option>
+				<option value="RS">Serbia</option>
+				<option value="SC">Seychelles</option>
+				<option value="SL">Sierra Leone</option>
+				<option value="SG">Singapore</option>
+				<option value="SK">Slovakia</option>
+				<option value="SI">Slovenia</option>
+				<option value="SB">Solomon Islands</option>
+				<option value="SO">Somalia</option>
+				<option value="ZA">South Africa</option>
+				<option value="SS">South Sudan</option>
+				<option value="ES">Spain</option>
+				<option value="LK">Sri Lanka</option>
+				<option value="SD">Sudan</option>
+				<option value="SR">Suriname</option>
+				<option value="SZ">Swaziland</option>
+				<option value="SE">Sweden</option>
+				<option value="CH">Switzerland</option>
+				<option value="SY">Syrian Arab Republic</option>
+				<option value="TW">Taiwan, Province of China</option>
+				<option value="TJ">Tajikistan</option>
+				<option value="TZ">Tanzania, United Republic of</option>
+				<option value="TH">Thailand</option>
+				<option value="TG">Togo</option>
+				<option value="TO">Tonga</option>
+				<option value="TT">Trinidad and Tobago</option>
+				<option value="TN">Tunisia</option>
+				<option value="TR">Turkey</option>
+				<option value="TM">Turkmenistan</option>
+				<option value="UG">Uganda</option>
+				<option value="UA">Ukraine</option>
+				<option value="AE">United Arab Emirates</option>
+				<option value="GB">United Kingdom</option>
+				<option value="US">United States</option>
+				<option value="UY">Uruguay</option>
+				<option value="UZ">Uzbekistan</option>
+				<option value="VU">Vanuatu</option>
+				<option value="VE">Venezuela, Bolivarian Republic of</option>
+				<option value="VN">Viet Nam</option>
+				<option value="YE">Yemen</option>
+				<option value="ZM">Zambia</option>
+				<option value="ZW">Zimbabwe</option>
+			</select>
+
+			<div class="superinput">
+				<input id="i_city" type="text" name="city" placeholder="Colombo" autocomplete="off" maxlength="64" spellcheck="false" aria-label="City location" tabindex="-1">
+				<span class="si-status"><i></i></span>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="wrapper">
+			<label for="i_units" class="trn">Unit</label>
+			<select id="i_units">
+				<option value="metric" class="trn">Celsius</option>
+				<option value="imperial" class="trn">Fahrenheit</option>
+			</select>
+		</div>
+
+		<div class="as as_weather">
+			<hr>
+
+			<div class="wrapper">
+				<label for="i_forecast" class="trn">Forecast</label>
+				<select id="i_forecast">
+					<option value="auto" class="trn">Automatic</option>
+					<option value="always" class="trn">Always show</option>
+					<option value="never" class="trn">Never show</option>
+				</select>
+			</div>
+
+			<hr>
+
+			<div class="wrapper">
+				<label for="i_temp" class="trn">Temperature</label>
+				<select id="i_temp">
+					<option value="actual" class="trn">Actual</option>
+					<option value="feelslike" class="trn">Feels like</option>
+					<option value="both" class="trn">Both</option>
+				</select>
+			</div>
+
+			<hr>
+
+			<div class="wrapper">
+				<span>
+					<label for="i_moreinfo" class="trn">Detailed weather</label>
+					<button class="tooltip ttdetailledweather opt-hider" aria-label="What is detailed weather?">?</button>
+				</span>
+
+				<select id="i_moreinfo" class="opt-hider">
+					<option value="none" class="trn">None</option>
+					<option value="msnw">MSN Weather</option>
+					<option value="yhw">Yahoo Weather</option>
+					<option value="windy">Windy.com</option>
+					<option value="custom" class="trn">Custom provider</option>
+				</select>
+			</div>
+
+			<p class="tooltiptext ttdetailledweather">
+				<span class="trn">Click on the weather widget to get detailed weather reports.</span>
+			</p>
+
+			<div id="weather_provider" class="dropdown">
+				<hr>
+				<div class="wrapper">
+					<label for="i_provider" class="trn">Provider URL</label>
+					<input id="i_provider" name="provider" type="text" placeholder="https://www.weatherbug.com/" maxlength="512" tabindex="-1">
+				</div>
+			</div>
+
+			<hr>
+
+			<div class="wrapper">
+				<label for="i_weatherhide" class="trn">Show</label>
+				<select id="i_weatherhide">
+					<option value="all" class="trn">Description and icon</option>
+					<option value="icon" class="trn">Description only</option>
+					<option value="desc" class="trn">Icon only</option>
+					<option value="disabled" class="trn">Disabled</option>
+				</select>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="greethide wrapper">
+			<label for="i_greethide" class="trn">Greetings</label>
+			<input id="i_greethide" class="switch" type="checkbox">
+		</div>
+
+		<hr>
+
+		<div class="wrapper">
+			<label for="i_greeting" class="trn">Greeting name</label>
+			<input type="text" name="greeting" id="i_greeting" autocomplete="off" maxlength="24" placeholder="Name">
+		</div>
+	</div>
+</div>
+
+<div class="settings-title">
+	<h2 class="trn">Notes</h2>
+</div>
+
+<div class="param">
+	<div class="activate_notes wrapper">
+		<label for="i_notes" class="trn">Enable</label>
+		<input id="i_notes" class="switch opt-hider" type="checkbox">
+	</div>
+
+	<div id="notes_options" class="dropdown">
+		<div class="as as_notes">
+			<hr>
+
+			<div class="wrapper">
+				<label for="i_notesalign" class="trn">Text alignment</label>
+				<select id="i_notesalign" tabindex="-1">
+					<option value="left" class="trn">Left</option>
+					<option value="center" class="trn">Center</option>
+					<option value="right" class="trn">Right</option>
+				</select>
+			</div>
+
+			<hr>
+
+			<div class="wrapper">
+				<label for="i_noteswidth" class="trn">Width</label>
+				<input id="i_noteswidth" type="range" name="i_noteswidth" min="20" max="70" step="1" value="50" class="range" tabindex="-1">
+			</div>
+
+			<hr>
+
+			<div class="wrapper">
+				<label for="i_notesopacity" class="trn">Opacity</label>
+				<input id="i_notesopacity" type="range" name="i_notesopacity" min="0" max="1" step=".1" value=".1" class="range" tabindex="-1">
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="settings-title">
+	<h2 class="trn">Search bar</h2>
+</div>
+
+<div class="param">
+	<div class="activate_searchbar wrapper">
+		<label for="i_sb" class="trn">Enable</label>
+		<input id="i_sb" class="switch opt-hider" type="checkbox">
+	</div>
+
+	<div id="searchbar_options" class="dropdown">
+		<hr>
+
+		<div class="wrapper">
+			<label for="i_sbnewtab" class="trn">Open in new tab</label>
+			<input id="i_sbnewtab" class="switch" type="checkbox" tabindex="-1">
+		</div>
+
+		<hr>
+
+		<div class="wrapper">
+			<label for="i_sbsuggestions" class="trn">Suggestions</label>
+			<input id="i_sbsuggestions" class="switch" type="checkbox" tabindex="-1">
+		</div>
+
+		<hr>
+
+		<div class="wrapper">
+			<label for="i_sbengine" class="trn">Search engine</label>
+			<select id="i_sbengine" class="choose_search opt-hider" tabindex="-1">
+				<option value="google">Google</option>
+				<option value="ddg">DuckDuckGo</option>
+				<option value="bing">Bing</option>
+				<option value="yahoo">Yahoo</option>
+				<option value="startpage">Startpage</option>
+				<option value="brave">Brave</option>
+				<option value="lilo">Lilo</option>
+				<option value="ecosia">Ecosia</option>
+				<option value="qwant">Qwant</option>
+				<option value="baidu">Baidu</option>
+				<option value="custom" class="trn">Custom</option>
+			</select>
+		</div>
+
+		<div id="searchbar_request" class="dropdown">
+			<hr>
+			<div class="wrapper">
+				<label for="i_sbrequest" class="trn">URL request</label>
+
+				<div class="superinput">
+					<input id="i_sbrequest" name="sbrequest" type="text" placeholder="Search query: %s" maxlength="512" tabindex="-1">
+					<span class="si-status"><i></i></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="as as_searchbar">
+			<hr>
+
+			<div class="wrapper">
+				<label for="i_sbplaceholder" class="trn">Placeholder text</label>
+				<input type="text" name="sbplaceholder" id="i_sbplaceholder" autocomplete="off" maxlength="48" placeholder="Search" tabindex="-1">
+			</div>
+
+			<hr>
+
+			<div class="wrapper">
+				<label for="i_sbopacity" class="trn">Opacity</label>
+				<input id="i_sbopacity" type="range" name="i_sbopacity" min="0" max="1" step=".1" value=".1" class="range" tabindex="-1">
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="settings-title">
+	<h2 class="trn">Quotes</h2>
+</div>
+
+<div class="param">
+	<div class="activate_quotes wrapper">
+		<label for="i_quotes" class="trn">Enable</label>
+		<input id="i_quotes" class="switch opt-hider" type="checkbox">
+	</div>
+
+	<div id="quotes_options" class="dropdown">
+		<hr>
+
+		<div class="as as_quote_type">
+			<div class="wrapper">
+				<label for="i_qtauthor" class="trn">Always show author</label>
+				<input id="i_qtauthor" class="switch" type="checkbox" tabindex="-1">
+			</div>
+
+			<hr>
+
+			<div class="wrapper">
+				<label for="i_qttype" class="trn">Quote type</label>
+				<div>
+					<select id="i_qttype" tabindex="-1">
+						<option value="classic" class="trn">Classic</option>
+						<option value="inspirobot">Inspirobot</option>
+						<option value="kaamelott">Kaamelott</option>
+						<option value="user" class="trn">Custom</option>
+					</select>
+				</div>
+			</div>
+
+			<div id="quotes_userlist" class="dropdown">
+				<hr>
+
+				<div class="wrapper">
+					<label for="i_qtlist" class="trn">Custom quotes</label>
+				</div>
+
+				<textarea id="i_qtlist" name="qtlist" type="text" placeholder="Author, Your quote.
+Author, Your second quote." maxlength="8000" tabindex="-1"></textarea>
+			</div>
+
+			<hr>
+		</div>
+
+		<div class="wrapper freq_wrap">
+			<label for="i_qtfreq" class="trn">Frequency</label>
+			<div>
+				<select id="i_qtfreq" tabindex="-1">
+					<option value="tabs" class="trn">Every tab</option>
+					<option value="hour" class="trn">Every hour</option>
+					<option value="day" class="trn">Every day</option>
+					<option value="pause" class="trn">Pause</option>
+				</select>
+				<button id="i_qtrefresh" class="input-btn refresh-btn" aria-label="Choose another quote" tabindex="-1">
+					<span>↻</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="as as_fonts">
+	<div class="settings-title">
+		<h2 class="trn">Fonts</h2>
+	</div>
+
+	<div class="param">
+		<div class="wrapper">
+			<label for="i_customfont" class="trn">Font family</label>
+
+			<div class="superinput">
+				<input list="dl_fontfamily" id="i_customfont" type="text" name="customfont" autocomplete="off" placeholder="Segoe UI">
+				<span class="si-status"><i></i></span>
+				<datalist id="dl_fontfamily"></datalist>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="wrapper">
+			<label for="i_weight" class="trn">Weight</label>
+			<select id="i_weight">
+				<option value="100" class="hidden">Thin</option>
+				<option value="200" class="hidden">Extra Light</option>
+				<option value="300">Light</option>
+				<option value="400">Normal</option>
+				<option value="500" class="hidden">Medium</option>
+				<option value="600">Semi Bold</option>
+				<option value="700">Bold</option>
+				<option value="800">Extra Bold</option>
+				<option value="900" class="hidden">Black</option>
+			</select>
+		</div>
+
+		<hr>
+
+		<div class="wrapper">
+			<label for="i_size" class="trn">Size</label>
+			<input id="i_size" type="range" name="fontsize" min="5" max="26" step=".05" class="range">
+		</div>
+
+		<hr>
+
+		<div class="wrapper">
+			<label for="i_textshadow" class="trn">Shadow</label>
+			<input id="i_textshadow" type="range" name="textshadow" min="0" max="1" step=".025" class="range">
+		</div>
+	</div>
+</div>
+
+<div class="as as_page">
+	<div class="settings-title">
+		<h2 class="trn">Page layout</h2>
+
+		<button class="tooltip ttgrid opt-hider" aria-label="Tips on page grid layout">?</button>
+
+		<p class="tooltiptext ttgrid">
+			<span class="trn">Customise how and where widgets appear.</span>
+			<span class="trn instructions">Open the toolbox and select a widget to modify on the page.</span>
+			<a class="trn" href="https://bonjourr.fr/docs/overview#page-layouts" rel="noreferrer noopener" tabindex="-1">Learn more</a>
+		</p>
+	</div>
+
+	<div class="param">
+		<div class="wrapper">
+			<label for="b_editmove" class="trn">Open layout toolbox</label>
+			<button id="b_editmove" class="param-btn trn">Open</button>
+		</div>
+
+		<div id="grid-layout-wrapper">
+			<hr>
+
+			<div class="wrapper">
+				<span class="trn">Layout columns</span>
+				<div class="wrapper">
+					<div id="grid-layout" class="mover">
+						<button data-layout="single" aria-label="Single column layout" class="selected"></button>
+						<button data-layout="double" aria-label="Double column layout">
+							<span></span>
+						</button>
+						<button data-layout="triple" aria-label="Triple column layout">
+							<span></span>
+							<span></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="wrapper">
+			<label for="i_pagewidth" class="trn">Page width</label>
+			<input id="i_pagewidth" type="range" name="page_width" min="600" max="2200" value="1600" step="100" class="range">
+		</div>
+
+		<hr>
+
+		<div class="wrapper">
+			<label for="i_pagegap" class="trn">Page gap</label>
+			<input id="i_pagegap" type="range" name="page_gap" min="0" max="8" value="1" step=".5" class="range">
+		</div>
+	</div>
+</div>
+
+<div class="as as_css cssEditor">
+	<div class="settings-title">
+		<h2 id="lbl-css" class="trn">Custom Style</h2>
+
+		<button class="tooltip ttcss opt-hider" aria-label="Tips on Custom styles">?</button>
+
+		<p class="tooltiptext ttcss">
+			<span class="trn">Make cool things happen with CSS. </span>
+			<span class="trn instructions">Check out our </span>
+			<a class="trn" href="https://bonjourr.fr/docs/styles/" rel="noreferrer noopener" target="_blank" tabindex="-1">CSS snippets.</a>
+		</p>
+	</div>
+
+	<textarea id="cssEditor" placeholder="Type in your custom CSS" maxlength="8080" spellcheck="false" autocomplete="off" aria-labelledby="lbl-css" style="height: 80px"></textarea>
+</div>
+
+<div class="as as_updates">
+	<div class="settings-title">
+		<h2 class="trn">Updates</h2>
+	</div>
+
+	<div class="param">
+		<div class="wrapper">
+			<label for="i_announce" class="trn">Announcements</label>
+			<select id="i_announce">
+				<option class="trn" value="all">All</option>
+				<option class="trn" value="major">Major changes</option>
+				<option class="trn" value="off">Disabled</option>
+			</select>
+		</div>
+	</div>
+</div>
+
+<div id="importexport">
+	<div class="settings-title">
+		<h2 class="trn">Settings management</h2>
+
+		<button class="tooltip ttexport" aria-label="Tips on imports &amp; exports">?</button>
+
+		<p class="tooltiptext ttexport">
+			<span class="trn">Transfer your settings between multiple instances of Bonjourr.</span>
+			<a class="trn" href="https://bonjourr.fr/docs/overview/#settings-management" rel="noreferrer noopener" target="_blank" tabindex="-1">Learn more</a>
+		</p>
+	</div>
+
+	<div class="param">
+		<div class="importexport-tabs">
+			<button id="s_export" class="trn opt-hider">Export</button>
+			<button id="s_import" class="trn opt-hider">Import</button>
+			<div class="glider"></div>
+		</div>
+
+		<div id="export" class="shown">
+			<textarea id="area_export" autocorrect="off" spellcheck="false" aria-labelledby="s_export"></textarea>
+
+			<div>
+				<button id="b_exportcopy" class="inline-btn trn">Copy text</button>
+
+				<div id="save_wrapper">
+					<button id="b_exportfile" class="inline-btn trn">Export as file</button>
+					<a id="downloadfile" href="chrome-extension://dlnejlppicbjfcfcedcflplfjajinajd/index.html" download="" aria-hidden="true">export download link</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="import">
+			<label id="importFile" class="uploadContainer">
+				<p class="trn">Drop file to import settings</p>
+				<input id="i_importfile" type="file" name="import_file" tabindex="-1">
+			</label>
+
+			<div>
+				<input id="i_importtext" type="text" placeholder="or paste as text" aria-labelledby="importtext" tabindex="-1">
+				<button id="b_importtext" class="inline-btn trn" tabindex="-1">Import</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="resetContainer">
+	<div class="param">
+		<div id="reset_first" class="wrapper shown">
+			<button id="b_resetconf" class="inline-btn trn">Reset settings</button>
+		</div>
+
+		<div id="reset_conf" class="wrapper">
+			<span class="trn">Are you sure ?</span>
+			<div>
+				<button id="b_resetyes" class="inline-btn trn">I am sure</button>
+				<button id="b_resetno" class="inline-btn trn">No, go back</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="settings-footer">
+	<div>
+		<p>
+			<span>Bonjourr</span>
+			<a id="version" href="https://github.com/victrme/Bonjourr/releases" rel="noreferrer noopener">19.1.1</a>
+		</p>
+
+		<div id="settings-footer-links">
+			<a href="https://bonjourr.fr/" title="Bonjourr&#39;s website" rel="noreferrer noopener">
+				<svg version="1.1" viewBox="0 0 16 16" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<path d="M15.4 7 14 5.6V2c0-.6-.5-1-1-1h-1a1 1 0 0 0-1 1v.6l-2-2C8.7.3 8.5 0 8 0s-.7.3-1 .6L.5 7c-.3.3-.5.6-.5 1 0 .6.4 1 1 1h1v6c0 .6.5 1 1 1h3v-5c0-.6.5-1 1-1h2c.6 0 1 .5 1 1v5h3c.6 0 1-.5 1-1V9h1c.6 0 1-.4 1-1 0-.4-.2-.7-.6-1z"></path>
+				</svg>
+			</a>
+			<a href="https://twitter.com/BonjourrTeam" title="Check out our Twitter" rel="noreferrer noopener">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 244">
+					<path d="M95 243A173 173 0 0 0 269 61c11-8 22-19 30-31-11 5-23 8-35 9 13-7 22-19 27-34a123 123 0 0 1-39 15 61 61 0 0 0-104 56C97 74 52 49 22 12a61 61 0 0 0 19 82 61 61 0 0 1-28-8v1c0 30 21 54 49 60a61 61 0 0 1-16 2l-12-1c8 24 31 42 58 42a123 123 0 0 1-76 27l-15-1c27 17 59 27 94 27"></path>
+				</svg>
+			</a>
+			<a href="https://github.com/victrme/Bonjourr" title="Bonjourr&#39;s GitHub repository" rel="noreferrer noopener">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98 96">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M48.9 0a49.2 49.2 0 0 0-15.4 96c2.3.4 3.2-1.2 3.2-2.5v-9c-13.6 2.9-16.5-6-16.5-6-2.2-5.7-5.4-7.1-5.4-7.1-4.4-3 .3-3 .3-3 5 .3 7.5 5 7.5 5 4.4 7.5 11.5 5.4 14.3 4 .4-3 1.7-5.3 3-6.5-10.8-1.1-22.2-5.4-22.2-24.3 0-5.4 2-9.8 5-13.2-.5-1.2-2.2-6.3.5-13 0 0 4.1-1.3 13.4 5A47 47 0 0 1 49 23.8c4 0 8.3.6 12.2 1.6 9.3-6.3 13.4-5 13.4-5 2.7 6.7 1 11.8.5 13 3.1 3.4 5 7.8 5 13.2 0 19-11.4 23-22.3 24.3 1.7 1.5 3.3 4.5 3.3 9.1v13.5c0 1.3.8 2.9 3.2 2.4a49.2 49.2 0 0 0 33.4-46.7A49 49 0 0 0 49 0z"></path>
+				</svg>
+			</a>
+			<a href="https://bonjourr.fr/docs/" title="Bonjourr&#39;s documentation" rel="noreferrer noopener">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+					<path d="M448 360V24c0-13-11-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13 0 24-11 24-24v-16c0-7-3-14-9-19-4-15-4-59 0-74 6-5 9-11 9-19zM128 134c0-3 3-6 6-6h212c3 0 6 3 6 6v20c0 3-3 6-6 6H134c-3 0-6-3-6-6v-20zm0 64c0-3 3-6 6-6h212c3 0 6 3 6 6v20c0 3-3 6-6 6H134c-3 0-6-3-6-6v-20zm253 250H96a32 32 0 1 1 0-64h285c-2 17-2 47 0 64z"></path>
+				</svg>
+			</a>
+		</div>
+	</div>
+
+	<div>
+		<p class="trn">Made in France with ❤️</p>
+		<p>
+			<span class="trn">by</span>
+			<a id="signature-one" href="https://victr.me/" rel="noreferrer noopener">Victor Azevedo</a>
+			<span> &amp; </span>
+			<a id="signature-two" href="https://tahoe.be/" rel="noreferrer noopener">Tahoe Beetschen</a>
+		</p>
+	</div>
+
+	<div id="donate">
+		<p>
+			<span class="trn">Consider</span>
+			<a href="https://bonjourr.fr/#donate" rel="noreferrer noopener" class="trn">donating</a>
+			<span class="trn">if you love Bonjourr</span> 😊
+		</p>
+	</div>
+</div>
+</aside><div id="popup" class="review shown">
+				<div id="popup_text">
+					<div id="popup_close">✕</div>
+					<div id="popup_icon">
+						<div>
+							<span>19</span>
+						</div>
+					</div>
+					<p id="popup_desc">Love using Bonjourr? Consider giving us a review or donating, that would help a lot! 😇</p>
+				</div>
+				<div id="popup_buttons"><a href="https://chrome.google.com/webstore/detail/bonjourr-%C2%B7-minimalist-lig/dlnejlppicbjfcfcedcflplfjajinajd/reviews" rel="noreferrer">Review</a><a href="https://ko-fi.com/bonjourr" rel="noreferrer">Donate</a></div>
+			</div></body></html>
