@@ -71,7 +71,7 @@ public class BookingFormController {
     ObservableList<BookingsDto> bookingObList = FXCollections.observableArrayList();
     int userRowNumber;
 
-    public void initialize() {
+    public void initialize() throws Exception {
 
 
         colBorrowId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -92,8 +92,8 @@ public class BookingFormController {
 
         tblBookRecord.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
             userRowNumber = (Integer) newValue;
-            SaveBtn.setDisable(false);
-            updateBtn.setDisable(true);
+            SaveBtn.setDisable(true);
+            updateBtn.setDisable(false);
             removeBtn.setDisable(false);
 
             try {
@@ -102,14 +102,7 @@ public class BookingFormController {
             }
         });
 
-
-        selectBookCmb.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            try {
-                BookDto roomDTO = bookBO.find((String) newValue);
-                txtbookName.setText(roomDTO.getTitle());
-            } catch (Exception ignored) {
-            }
-        });
+        setSelectBookCmb();
 
         branchNameCmb.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             try {
@@ -129,6 +122,16 @@ public class BookingFormController {
             }
         });
 
+    }
+
+    public void setSelectBookCmb(){
+        selectBookCmb.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                BookDto roomDTO = bookBO.find((String) newValue);
+                txtbookName.setText(roomDTO.getTitle());
+            } catch (Exception ignored) {
+            }
+        });
     }
 
     private void setBookings(String bookingsId) throws Exception {
@@ -222,7 +225,8 @@ public class BookingFormController {
             bookDto.setAvailable(Constants.RESERVED);
             bookBO.update(bookDto);
             loadBooking();
-            setBookingID();
+            setBookingID();setSelectBookCmb();
+
         } catch (Exception ignored) {
         }
     }
@@ -241,6 +245,7 @@ public class BookingFormController {
         BookDto bookDto = bookBO.find(selectBookCmb.getSelectionModel().getSelectedItem().toString());
         bookDto.setAvailable(Constants.AVAILABLE);
         bookBO.update(bookDto);
+        loadBooking();
     }
 
     public void searchInBookingForm(KeyEvent keyEvent) throws Exception {

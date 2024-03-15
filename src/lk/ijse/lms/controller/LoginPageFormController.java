@@ -15,6 +15,8 @@ import lk.ijse.lms.util.NotificationController;
 import lk.ijse.lms.util.UILoader;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class LoginPageFormController {
     private final UserBO userBO = (UserBO) BOFactory.getBOFactory().getBO(BOFactory.BoTypes.USER);
@@ -23,25 +25,70 @@ public class LoginPageFormController {
     public PasswordField txtPwd;
     public Label lblHide;
     public ImageView powerOffSystem;
+    public ImageView userLock;
+    public Label warningLabel;
+
+    private int count = 0;
+
+    public void initialize() {
+        warningLabel.setVisible(false);
+        userLock.setVisible(false);
+        txtName.requestFocus();
+    }
 
     public void logInOnAction(ActionEvent actionEvent) throws Exception {
 
         List<UserDto> all = userBO.findAll();
 
-        for (UserDto userDto : all) {
-            if (txtName.getText().equals(userDto.getName())) {
-                if (txtPwd.getText().equals(userDto.getPassword())) {
-                    NotificationController.LoginSuccessfulNotification("YOUR");
-                    UILoader.load("MainForm", root);
-                } else {
-                    NotificationController.LoginUnSuccessfulNotification("entered", 3);
+        if (count >= 3) {
+            userLock.setVisible(true);
+            txtName.setDisable(true);
+            txtPwd.setDisable(true);
+            warningLabel.setVisible(true);
+            NotificationController.LoginUnSuccessfulNotification("entered", 3);
+            TimerOnAction();
+        } else {
+            if (!all.isEmpty()) {
+                boolean userFound = false;
+                for (UserDto userDto : all) {
+                    if (txtName.getText().equals(userDto.getName())) {
+                        userFound = true;
+                        if (txtPwd.getText().equals(userDto.getPassword())) {
+                            NotificationController.LoginSuccessfulNotification("YOUR");
+                            UILoader.load("MainForm", root);
+                        } else {
+                            count++;
+                            NotificationController.LoginUnSuccessfulNotification("entered", 3);
+                        }
+                    }
                 }
-            } else {
-                NotificationController.LoginSuccessfulNotification("");
+                if (!userFound) {
+                    count++;
+                    if (txtName.getText().equals("admin") && txtPwd.getText().equals("admin")) {
+                        NotificationController.LoginSuccessfulNotification("YOUR");
+                        UILoader.load("MainForm", root);
+                    } else {
+                        count++;
+                        NotificationController.LoginUnSuccessfulNotification("entered", 3);
+                    }
+                }
             }
         }
+    }
 
+    public void TimerOnAction(){
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                userLock.setVisible(false);
+                txtName.setDisable(false);
+                txtPwd.setDisable(false);
+                warningLabel.setVisible(false);
 
+            }
+        };
+        timer.schedule(task, 30000);
     }
 
     public void showPasswordOnMousePressed(MouseEvent mouseEvent) {

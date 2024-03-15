@@ -37,9 +37,9 @@
          </columnResizePolicy>
       </TableView>
       <TextField fx:id="searchField" layoutX="447.0" layoutY="59.0" onKeyReleased="#searchHistoryOnKeyReleased" prefHeight="38.0" prefWidth="340.0" promptText="Seach here..." style="-fx-background-radius: 10;" />
-      <ImageView fx:id="search" fitHeight="25.0" fitWidth="25.0" layoutX="753.0" layoutY="66.0" onMouseClicked="#searchOnAction" opacity="0.32" pickOnBounds="true" smooth="false">
+      <ImageView fx:id="search" fitHeight="25.0" fitWidth="25.0" layoutX="753.0" layoutY="66.0" onMouseClicked="#searchOnAction" pickOnBounds="true" smooth="false">
          <image>
-            <Image url="@../assets/icons8-search-50.png" />
+            <Image url="@../assets/icons8-search-48.png" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c3e50" height="18.0" layoutY="499.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />

@@ -7,6 +7,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="490.0" prefWidth="804.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #2c2c54;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.lms.controller.LoginPageFormController">
@@ -38,6 +39,17 @@
                   <Image url="@../assets/219969.png" />
                </image>
             </ImageView>
+            <ImageView fx:id="userLock" fitHeight="58.0" fitWidth="50.0" layoutX="294.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-padlock-94.png" />
+               </image>
+            </ImageView>
+            <Circle fill="#2ecc71" layoutX="153.0" layoutY="163.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="warningLabel" layoutX="48.0" layoutY="188.0" style="-fx-background-color: #FFFFFF;" text="Your Account is Temporally Disabled!" textFill="#fc0505">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <ImageView fitHeight="512.0" fitWidth="461.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
@@ -50,5 +62,6 @@
             <Image url="@../assets/icons8-power-off-96.png" />
          </image>
       </ImageView>
+      <Label layoutX="55.0" layoutY="451.0" styleClass="textLabel" stylesheets="@../assets/style/Style-001.css" text="Shut Down" />
    </children>
 </AnchorPane>
