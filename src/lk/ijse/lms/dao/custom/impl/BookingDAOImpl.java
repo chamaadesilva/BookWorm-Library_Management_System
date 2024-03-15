@@ -16,7 +16,6 @@ public class BookingDAOImpl implements BookingDAO {
     public boolean add(Bookings entity) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-
         session.save(entity);
 
         transaction.commit();

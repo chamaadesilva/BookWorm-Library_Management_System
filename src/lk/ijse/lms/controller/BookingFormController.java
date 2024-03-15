@@ -219,16 +219,35 @@ public class BookingFormController {
     @SneakyThrows
     public void SaveOnAction(ActionEvent actionEvent) {
         try {
-            bookingBO.add(new BookingsDto(borrowId.getText(), memberIdOnTransaction.getSelectionModel().getSelectedItem().toString(), selectBookCmb.getSelectionModel().getSelectedItem().toString(), branchNameCmb.getSelectionModel().getSelectedItem().toString(), null, null));
+            bookingBO.add(new BookingsDto(borrowId.getText(), memberIdOnTransaction.getSelectionModel()
+                    .getSelectedItem().toString(), selectBookCmb.getSelectionModel().getSelectedItem().toString(),
+                    branchNameCmb.getSelectionModel().getSelectedItem().toString(), null, null));
 
             BookDto bookDto = bookBO.find(selectBookCmb.getSelectionModel().getSelectedItem().toString());
             bookDto.setAvailable(Constants.RESERVED);
             bookBO.update(bookDto);
             loadBooking();
+            clearOnAction();
             setBookingID();setSelectBookCmb();
 
         } catch (Exception ignored) {
         }
+    }
+
+    @SneakyThrows
+    public void clearOnAction() {
+        try{
+            borrowId.clear();
+            memberIdOnTransaction.getSelectionModel().clearSelection();
+            selectBookCmb.getSelectionModel().clearSelection();
+            branchNameCmb.getSelectionModel().clearSelection();
+            txtName.clear();
+            txtAddress.clear();
+            txtContact.clear();
+            txtbookName.clear();
+            txtbranchName.clear();
+            subbranchName.clear();
+        }catch (Exception ignored){}
     }
 
 
@@ -236,6 +255,7 @@ public class BookingFormController {
         try {
             bookingBO.update(new BookingsDto(borrowId.getText(), memberIdOnTransaction.getSelectionModel().getSelectedItem().toString(), selectBookCmb.getSelectionModel().getSelectedItem().toString(), null, null));
             loadBooking();
+            clearOnAction();
             setBookingID();
         } catch (Exception ignored) {
         }
@@ -246,6 +266,7 @@ public class BookingFormController {
         bookDto.setAvailable(Constants.AVAILABLE);
         bookBO.update(bookDto);
         loadBooking();
+        clearOnAction();
     }
 
     public void searchInBookingForm(KeyEvent keyEvent) throws Exception {

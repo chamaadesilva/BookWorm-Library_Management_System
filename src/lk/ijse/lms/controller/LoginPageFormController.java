@@ -46,32 +46,32 @@ public class LoginPageFormController {
             txtPwd.setDisable(true);
             warningLabel.setVisible(true);
             NotificationController.LoginUnSuccessfulNotification("entered", 3);
-            TimerOnAction();
+            TimerOnAction(); // Start the lockout timer
         } else {
-            if (!all.isEmpty()) {
-                boolean userFound = false;
-                for (UserDto userDto : all) {
-                    if (txtName.getText().equals(userDto.getName())) {
-                        userFound = true;
-                        if (txtPwd.getText().equals(userDto.getPassword())) {
-                            NotificationController.LoginSuccessfulNotification("YOUR");
-                            UILoader.load("MainForm", root);
-                        } else {
-                            count++;
-                            NotificationController.LoginUnSuccessfulNotification("entered", 3);
-                        }
-                    }
-                }
-                if (!userFound) {
-                    count++;
-                    if (txtName.getText().equals("admin") && txtPwd.getText().equals("admin")) {
+            boolean userFound = false;
+            for (UserDto userDto : all) {
+                if (txtName.getText().equals(userDto.getName())) {
+                    userFound = true;
+                    if (txtPwd.getText().equals(userDto.getPassword())) {
                         NotificationController.LoginSuccessfulNotification("YOUR");
                         UILoader.load("MainForm", root);
+                        return; // Successful login, no need to continue
                     } else {
                         count++;
                         NotificationController.LoginUnSuccessfulNotification("entered", 3);
+                        break; // Incorrect password, no need to check further
                     }
                 }
+            }
+
+            // Check for the admin login if the user is not found
+            if (!userFound && txtName.getText().equals("admin") && txtPwd.getText().equals("admin")) {
+                NotificationController.LoginSuccessfulNotification("YOUR");
+                UILoader.load("MainForm", root);
+                return; // Successful login as admin, no need to continue
+            } else {
+                count++;
+                NotificationController.LoginUnSuccessfulNotification("entered", 3);
             }
         }
     }
