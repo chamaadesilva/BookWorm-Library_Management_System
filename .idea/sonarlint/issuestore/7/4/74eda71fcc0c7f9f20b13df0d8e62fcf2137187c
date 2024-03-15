@@ -1,0 +1,41 @@
+
+Q
+java:S3740#"/Provide the parametrized type for this generic.(×ûÍÿüÿÿÿÿ8–”ËÅã1
+Q
+java:S3740$"/Provide the parametrized type for this generic.(­™àáûÿÿÿÿ8–”ËÅã1
+L
+java:S3740%"/Provide the parametrized type for this generic.(Õ¦ú‡8—”ËÅã1
+Q
+java:S3740&"/Provide the parametrized type for this generic.(¯õˆ«ıÿÿÿÿ8—”ËÅã1
+L
+java:S3740'"/Provide the parametrized type for this generic.(”Ç«¢8—”ËÅã1
+y
+java:S1104"WMake searchField a static final constant or non-public and provide accessors if needed.(Û½ÃÎûÿÿÿÿ8˜”ËÅã1
+m
+java:S1104!"PMake root a static final constant or non-public and provide accessors if needed.(ı„È¬8˜”ËÅã1
+y
+java:S1104""\Make tblSearchHistory a static final constant or non-public and provide accessors if needed.(ŒÜàà8˜”ËÅã1
+y
+java:S1104#"WMake colBorrowId a static final constant or non-public and provide accessors if needed.(×ûÍÿüÿÿÿÿ8˜”ËÅã1
+y
+java:S1104$"WMake colMemberId a static final constant or non-public and provide accessors if needed.(­™àáûÿÿÿÿ8˜”ËÅã1
+v
+java:S1104%"YMake colBranchName a static final constant or non-public and provide accessors if needed.(Õ¦ú‡8˜”ËÅã1
+z
+java:S1104&"XMake colPlaceDate a static final constant or non-public and provide accessors if needed.(¯õˆ«ıÿÿÿÿ8˜”ËÅã1
+r
+java:S1104'"UMake colStatus a static final constant or non-public and provide accessors if needed.(”Ç«¢8˜”ËÅã1
+t
+java:S1104("RMake search a static final constant or non-public and provide accessors if needed.(©³ôãıÿÿÿÿ8™”ËÅã1
+£
+java:S1186J"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(×ş­ˆúÿÿÿÿ8¼”ËÅã1
+T
+java:S1172B"2Remove this unused method parameter "actionEvent".(»õÆúÿÿÿÿ8Ç”ËÅã1
+L
+java:S1172N"/Remove this unused method parameter "keyEvent".(ÚÎ¬æ8É”ËÅã1
+U
+java:S1128"8Remove this unused import 'lk.ijse.lms.entity.Bookings'.(öÇù•8Ì”ËÅã1
+Y
+java:S1128"=Remove this unused import 'lk.ijse.lms.entity.LibraryBranch'.(ŠØß18Í”ËÅã1
+X
+java:S1128"6Remove this unused import 'lk.ijse.lms.entity.Member'.(Û¶íÓÿÿÿÿÿ8Í”ËÅã1

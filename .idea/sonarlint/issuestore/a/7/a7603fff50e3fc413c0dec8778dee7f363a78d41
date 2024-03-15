@@ -1,0 +1,64 @@
+
+o
+java:S1192e"MDefine a constant instead of duplicating this literal "[A-Za-z]{3,}" 3 times.(¸›¯Ğûÿÿÿÿ8Ø—å¿ã1
+m
+java:S1104""PMake root a static final constant or non-public and provide accessors if needed.(ı„È¬8–¬­œã1
+w
+java:S1104#"UMake txtBookId a static final constant or non-public and provide accessors if needed.(û¢şÿÿÿÿÿ8–¬­œã1
+r
+java:S1104$"UMake txtAuthor a static final constant or non-public and provide accessors if needed.(¶õÍÖ8–¬­œã1
+q
+java:S1104%"TMake txtTitle a static final constant or non-public and provide accessors if needed.(µ‚úĞ8–¬­œã1
+t
+java:S1104&"RMake btnAdd a static final constant or non-public and provide accessors if needed.(şÙâ€ûÿÿÿÿ8–¬­œã1
+r
+java:S1104'"UMake btnUpdate a static final constant or non-public and provide accessors if needed.(§Å‰÷8–¬­œã1
+w
+java:S1104("UMake btnRemove a static final constant or non-public and provide accessors if needed.(âÄùüÿÿÿÿ8—¬­œã1
+w
+java:S1104)"ZMake txtCreatedDate a static final constant or non-public and provide accessors if needed.(‰¢”ª8—¬­œã1
+|
+java:S1104*"ZMake txtUpdatedDate a static final constant or non-public and provide accessors if needed.(–±â¿ÿÿÿÿÿ8—¬­œã1
+q
+java:S1104+"TMake txtGenre a static final constant or non-public and provide accessors if needed.(†Ÿêç8—¬­œã1
+u
+java:S1104,"XMake txtAvailabel a static final constant or non-public and provide accessors if needed.(³¿Øì8—¬­œã1
+u
+java:S1104-"SMake tblBook a static final constant or non-public and provide accessors if needed.(âÈ¬àúÿÿÿÿ8—¬­œã1
+w
+java:S1104."UMake colBookId a static final constant or non-public and provide accessors if needed.(¹Æ£Îÿÿÿÿÿ8—¬­œã1
+r
+java:S1104/"UMake colAuthor a static final constant or non-public and provide accessors if needed.(ï¯Ê8—¬­œã1
+v
+java:S11040"TMake colTitle a static final constant or non-public and provide accessors if needed.(†Å­Ñüÿÿÿÿ8—¬­œã1
+q
+java:S11041"TMake colGenre a static final constant or non-public and provide accessors if needed.(í­8—¬­œã1
+z
+java:S11042"XMake colAvailabel a static final constant or non-public and provide accessors if needed.(óÊ•øıÿÿÿÿ8—¬­œã1
+|
+java:S11043"ZMake colCreatedDate a static final constant or non-public and provide accessors if needed.(õµıøÿÿÿÿ8˜¬­œã1
+w
+java:S11044"ZMake colUpdatedDate a static final constant or non-public and provide accessors if needed.(¦šÇñ8˜¬­œã1
+S
+java:S3655­"5Call "result.isPresent()" before accessing the value.(ÃÇûŞ8î­Ğïã1
+S
+java:S3655Í"5Call "result.isPresent()" before accessing the value.(ÃÇûŞ8­­œã1
+J	java:S108N")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8­­œã1
+J	java:S108Y")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8Ÿ­­œã1
+o	java:S100`"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃŠ“úúÿÿÿÿ8½šå¿ã1
+o	java:S100d"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªŸÁĞûÿÿÿÿ8¾šå¿ã1
+P
+java:S1172’"2Remove this unused method parameter "actionEvent".(ÀÑÿå8©­­œã1
+P
+java:S1172"2Remove this unused method parameter "actionEvent".(‡…ú8­­­œã1
+K	java:S108½")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8µ­­œã1
+U
+java:S1172Ã"2Remove this unused method parameter "actionEvent".(ˆ¤ÌÁúÿÿÿÿ8·­­œã1
+K	java:S108ß")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8úÍàïã1
+p	java:S100ã"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ‘´§ÿÿÿÿÿ8¼­­œã1
+U
+java:S1172ã"2Remove this unused method parameter "actionEvent".(æ‘´§ÿÿÿÿÿ8¼­­œã1
+Z
+java:S1128"=Remove this unused import 'lk.ijse.lms.dto.LibraryBranchDto'.(ØÉ¸8…®Ğïã1
+c
+java:S1128"ARemove this unused import 'net.sf.ehcache.search.expression.Not'.(À”Ÿÿüÿÿÿÿ8…®Ğïã1

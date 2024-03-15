@@ -1,0 +1,12 @@
+
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8¨­œã1
+V
+java:S1128"4Remove this unused import 'java.util.regex.Pattern'.(Ã•…Äúÿÿÿÿ8»º¤Àã1
+X
+java:S1128";Remove this unused import 'javafx.scene.control.TextField'.(¨¢¤¶8Àº¤Àã1
+^
+java:S1128
+"<Remove this unused import 'org.hibernate.annotations.Cache'.(ƒ×µ úÿÿÿÿ8¨­œã1
+l
+java:S1128"ORemove this unused import 'org.hibernate.annotations.CacheConcurrencyStrategy'.(Íûµ8¨­œã1

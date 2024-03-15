@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="668.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0.5EM;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.lms.controller.MainFormController">
+    <children>
+        <ImageView fitHeight="376.0" fitWidth="639.0" layoutX="14.0" layoutY="14.0" opacity="0.43" pickOnBounds="true" smooth="false">
+            <image>
+                <Image url="@../assets/online-education-technology-with-laptop_25030-43260.jpg" />
+            </image>
+        </ImageView>
+        <JFXButton fx:id="btnBook" buttonType="RAISED" layoutX="238.0" layoutY="35.0" onMouseClicked="#openBookDetail" prefHeight="45.0" prefWidth="192.0" style="-fx-background-color: #34495e; -fx-background-radius: 1em;" stylesheets="@../assets/style/Style.css" text="Book" textFill="WHITE">
+            <font>
+                <Font name="Arial Bold" size="15.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <Glow />
+            </effect>
+        </JFXButton>
+        <JFXButton fx:id="btnLibraryBranch" buttonType="RAISED" layoutX="238.0" layoutY="94.0" onMouseClicked="#openLibraryBranchDetails" prefHeight="45.0" prefWidth="192.0" style="-fx-background-color: #34495e; -fx-background-radius: 1em;" text="LibraryBranch" textFill="WHITE">
+            <font>
+                <Font name="Arial Bold" size="14.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <Glow />
+            </effect>
+        </JFXButton>
+        <JFXButton buttonType="RAISED" layoutX="238.0" layoutY="212.0" onAction="#userOnAction" prefHeight="45.0" prefWidth="192.0" style="-fx-background-color: #34495e; -fx-background-radius: 1em;" text="User" textFill="WHITE">
+            <font>
+                <Font name="Arial Bold" size="14.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <Glow />
+            </effect>
+        </JFXButton>
+        <JFXButton buttonType="RAISED" layoutX="238.0" layoutY="272.0" onAction="#BookingOnAction" prefHeight="45.0" prefWidth="192.0" style="-fx-background-color: #34495e; -fx-background-radius: 1em;" text="Booking" textFill="WHITE">
+            <font>
+                <Font name="Arial Bold" size="14.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <Glow />
+            </effect>
+        </JFXButton>
+        <JFXButton fx:id="btnMember" buttonType="RAISED" layoutX="238.0" layoutY="156.0" onMouseClicked="#openMemberDetails" prefHeight="45.0" prefWidth="192.0" style="-fx-background-color: #34495e; -fx-background-radius: 1em;" text="Member" textFill="WHITE">
+            <font>
+                <Font name="Arial Bold" size="14.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <Glow />
+            </effect>
+        </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="238.0" layoutY="327.0" onAction="#SearchHistoryOnAction" prefHeight="45.0" prefWidth="192.0" style="-fx-background-color: #34495e; -fx-background-radius: 1em;" text="Search History" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <Glow />
+         </effect>
+      </JFXButton>
+    </children>
+</AnchorPane>

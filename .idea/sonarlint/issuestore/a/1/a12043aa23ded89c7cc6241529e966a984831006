@@ -1,0 +1,52 @@
+
+m
+java:S1104"PMake root a static final constant or non-public and provide accessors if needed.(ı„È¬8¦¤Ãïã1
+y
+java:S1104 "WMake txtMemberId a static final constant or non-public and provide accessors if needed.(¢Á›èúÿÿÿÿ8¦¤Ãïã1
+p
+java:S1104!"SMake txtName a static final constant or non-public and provide accessors if needed.(ºßÕû8¦¤Ãïã1
+x
+java:S1104""VMake txtAddress a static final constant or non-public and provide accessors if needed.(ºåıÿÿÿÿ8¦¤Ãïã1
+x
+java:S1104#"VMake txtContact a static final constant or non-public and provide accessors if needed.(ıõ¸£ÿÿÿÿÿ8¦¤Ãïã1
+t
+java:S1104$"RMake btnAdd a static final constant or non-public and provide accessors if needed.(şÙâ€ûÿÿÿÿ8¦¤Ãïã1
+r
+java:S1104%"UMake btnUpdate a static final constant or non-public and provide accessors if needed.(§Å‰÷8¦¤Ãïã1
+w
+java:S1104&"UMake btnRemove a static final constant or non-public and provide accessors if needed.(âÄùüÿÿÿÿ8¦¤Ãïã1
+w
+java:S1104'"UMake tblMember a static final constant or non-public and provide accessors if needed.(Á–‘äıÿÿÿÿ8¦¤Ãïã1
+y
+java:S1104("WMake colMemberId a static final constant or non-public and provide accessors if needed.(¼©Ëüÿÿÿÿ8¦¤Ãïã1
+p
+java:S1104)"SMake colName a static final constant or non-public and provide accessors if needed.(Ñ›³8¦¤Ãïã1
+s
+java:S1104*"VMake colAddress a static final constant or non-public and provide accessors if needed.(ü®çö8¦¤Ãïã1
+x
+java:S1104+"VMake colContact a static final constant or non-public and provide accessors if needed.(¦ä¨¡şÿÿÿÿ8¦¤Ãïã1
+S
+java:S3655”"5Call "result.isPresent()" before accessing the value.(ÃÇûŞ8Ì¤Ãïã1
+S
+java:S3655´"5Call "result.isPresent()" before accessing the value.(ÃÇûŞ8îŠÆïã1
+J	java:S108?")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8Ö¤Ãïã1
+J	java:S108K")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8Ø¤Ãïã1
+j	java:S100R"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨°µ°8Ø¤Ãïã1
+j	java:S100V"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Óéøä8Ù¤Ãïã1
+n
+java:S5998Y"LRefactor this repetition that can lead to a stack overflow for large inputs.(¿ ·›øÿÿÿÿ8Û¤Ãïã1
+^
+java:S6353Y"<Use concise character class syntax '\\d' instead of '[0-9]'.(¿ ·›øÿÿÿÿ8Û¤Ãïã1
+^
+java:S6353Y"<Use concise character class syntax '\\d' instead of '[0-9]'.(¿ ·›øÿÿÿÿ8Û¤Ãïã1
+P
+java:S1172€"2Remove this unused method parameter "actionEvent".(ÀÑÿå8ß¤Ãïã1
+P
+java:S1172Œ"2Remove this unused method parameter "actionEvent".(‡…ú8à¤Ãïã1
+K	java:S108¤")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8ã¤Ãïã1
+U
+java:S1172ª"2Remove this unused method parameter "actionEvent".(ˆ¤ÌÁúÿÿÿÿ8ä¤Ãïã1
+K	java:S108Ä")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8õóÈïã1
+p	java:S100È"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ‘´§ÿÿÿÿÿ8ç¤Ãïã1
+U
+java:S1172È"2Remove this unused method parameter "actionEvent".(æ‘´§ÿÿÿÿÿ8ç¤Ãïã1

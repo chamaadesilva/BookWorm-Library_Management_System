@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" stylesheets="@../assets/style/Style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.lms.controller.UserFormController">
+    <children>
+        <Label layoutX="193.0" layoutY="13.0" prefHeight="30.0" prefWidth="185.0" text="     User Management">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="130.0" layoutY="165.0" onAction="#btnOnActionAdd" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #2ed573;" text="Add" />
+        <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="258.0" layoutY="167.0" onAction="#btnOnActionUpdate" style="-fx-background-color: #feca57;" text="Update" />
+        <JFXButton fx:id="btnRemove" buttonType="RAISED" layoutX="393.0" layoutY="166.0" onAction="#btnOnActionRemove" style="-fx-background-color: #ff4757;" text="Remove" />
+        <TableView fx:id="tblUser" layoutX="33.0" layoutY="199.0" prefHeight="196.0" prefWidth="538.0">
+            <columns>
+                <TableColumn fx:id="colUserId" prefWidth="88.0" text="User Id" />
+                <TableColumn fx:id="colUserName" prefWidth="135.20001220703125" text="User Name" />
+                <TableColumn fx:id="colEmail" prefWidth="206.4000244140625" text="Email" />
+                <TableColumn fx:id="colPassword" prefWidth="104.79998779296875" text="Password" />
+            </columns>
+        </TableView>
+      <Button layoutX="24.0" layoutY="16.0" mnemonicParsing="false" onAction="#BackOnAction" style="-fx-background-color: #34495e;" text="Back" textFill="WHITE" />
+      <AnchorPane layoutX="66.0" layoutY="49.0" prefHeight="45.0" prefWidth="162.0" styleClass="textPane1">
+         <children>
+            <TextField fx:id="txtUserId" layoutX="6.0" layoutY="6.0" onKeyReleased="#text_Field_Checker_In_User" prefHeight="33.0" prefWidth="151.0" promptText="User Id" style="-fx-background-color: white;" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="341.0" layoutY="43.0" prefHeight="45.0" prefWidth="162.0" styleClass="textPane1">
+         <children>
+            <TextField fx:id="txtUserName" layoutX="6.0" layoutY="6.0" onKeyReleased="#text_Field_Checker_In_User" prefHeight="33.0" prefWidth="151.0" promptText="User Name" style="-fx-background-color: white;" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="66.0" layoutY="106.0" prefHeight="45.0" prefWidth="162.0" styleClass="textPane1">
+         <children>
+            <TextField fx:id="txtEmail" layoutX="6.0" layoutY="6.0" onKeyReleased="#text_Field_Checker_In_User" prefHeight="33.0" prefWidth="151.0" promptText="Email" style="-fx-background-color: white;" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="341.0" layoutY="105.0" prefHeight="45.0" prefWidth="162.0" styleClass="textPane1">
+         <children>
+            <PasswordField fx:id="txtPassword" layoutX="5.0" layoutY="5.0" onKeyReleased="#text_Field_Checker_In_User" opacity="0.54" promptText="Password" styleClass="textField" />
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>

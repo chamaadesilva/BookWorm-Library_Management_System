@@ -1,0 +1,52 @@
+
+m
+java:S1104 "PMake root a static final constant or non-public and provide accessors if needed.(ı„È¬8Ã³­œã1
+v
+java:S1104!"TMake txtLibId a static final constant or non-public and provide accessors if needed.(©‡™ûÿÿÿÿ8Ã³­œã1
+p
+java:S1104""SMake txtName a static final constant or non-public and provide accessors if needed.(ºßÕû8Ã³­œã1
+t
+java:S1104#"WMake txtLocation a static final constant or non-public and provide accessors if needed.(ÛäÜØ8Ã³­œã1
+t
+java:S1104$"RMake btnAdd a static final constant or non-public and provide accessors if needed.(şÙâ€ûÿÿÿÿ8Ã³­œã1
+r
+java:S1104%"UMake btnUpdate a static final constant or non-public and provide accessors if needed.(§Å‰÷8Ã³­œã1
+w
+java:S1104&"UMake btnRemove a static final constant or non-public and provide accessors if needed.(âÄùüÿÿÿÿ8Ã³­œã1
+w
+java:S1104'"ZMake txtCreatedDate a static final constant or non-public and provide accessors if needed.(‰¢”ª8Ä³­œã1
+|
+java:S1104("ZMake txtUpdatedDate a static final constant or non-public and provide accessors if needed.(–±â¿ÿÿÿÿÿ8Ä³­œã1
+~
+java:S1104)"\Make tblLibraryBranch a static final constant or non-public and provide accessors if needed.(˜Üßùÿÿÿÿ8Ä³­œã1
+q
+java:S1104*"TMake colLibId a static final constant or non-public and provide accessors if needed.(¯—ò8Ä³­œã1
+o
+java:S1104+"SMake colName a static final constant or non-public and provide accessors if needed.(ŸåÆ8Ä³­œã1
+y
+java:S1104,"WMake colLocation a static final constant or non-public and provide accessors if needed.( Õ¡Ìûÿÿÿÿ8Ä³­œã1
+w
+java:S1104-"ZMake colCreatedDate a static final constant or non-public and provide accessors if needed.(¦ëĞ¿8Ä³­œã1
+|
+java:S1104."ZMake colUpdatedDate a static final constant or non-public and provide accessors if needed.(ß«÷¨ıÿÿÿÿ8Ä³­œã1
+S
+java:S3655»"5Call "result.isPresent()" before accessing the value.(ÃÇûŞ8ëõûÀã1
+S
+java:S3655"5Call "result.isPresent()" before accessing the value.(ÃÇûŞ8ëõûÀã1
+J	java:S108G")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8Œ´­œã1
+J	java:S108S")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8´­œã1
+j	java:S100Y"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½ÔŒå8¯¨é¿ã1
+i	java:S100]"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úö¼k8°¨é¿ã1
+P
+java:S1172"2Remove this unused method parameter "actionEvent".(ÀÑÿå8•´­œã1
+P
+java:S1172"2Remove this unused method parameter "actionEvent".(‡…ú8˜´­œã1
+F	java:S108­")Either remove or fill this block of code.(¨šşµ8´­œã1
+U
+java:S1172²"2Remove this unused method parameter "actionEvent".(ˆ¤ÌÁúÿÿÿÿ8¤´­œã1
+K	java:S108Ï")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8¨´­œã1
+p	java:S100Ó"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ‘´§ÿÿÿÿÿ8©´­œã1
+U
+java:S1172Ó"2Remove this unused method parameter "actionEvent".(æ‘´§ÿÿÿÿÿ8ª´­œã1
+R
+java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èıÿÿÿÿ8¢šéïã1

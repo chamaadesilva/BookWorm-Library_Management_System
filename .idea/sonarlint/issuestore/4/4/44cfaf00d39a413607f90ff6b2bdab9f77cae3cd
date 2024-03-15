@@ -1,0 +1,17 @@
+
+
+java:S1192"]Define a constant instead of duplicating this literal "lk/ijse/lms/assets/check.png" 3 times.(‘é°àûÿÿÿÿ8Ô¾¼ïã1
+
+java:S1192-"]Define a constant instead of duplicating this literal "lk/ijse/lms/assets/error.png" 3 times.(–®ü§ýÿÿÿÿ8³Ç®ïã1
+\
+java:S1118":Add a private constructor to hide the implicit public one.(ê–²‚ÿÿÿÿÿ8ÄÇ®ïã1
+o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š´Ï­øÿÿÿÿ8ÄÇ®ïã1
+o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(žÊÒÝøÿÿÿÿ8ê¾¼ïã1
+j	java:S100,"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷Š®å8ÎÇ®ïã1
+K
+java:S1172,".Remove this unused method parameter "option2".(÷Š®å8ÏÇ®ïã1
+j	java:S1007"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ª§¾Ý8ÐÇ®ïã1
+i	java:S100C"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®¼»H8ÓÇ®ïã1
+o	java:S100Q"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÒÐí…øÿÿÿÿ8ÕÇ®ïã1
+Q
+java:S1172Q"/Remove this unused method parameter "attempts".(ÒÐí…øÿÿÿÿ8ÖÇ®ïã1

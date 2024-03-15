@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="668.0" style="-fx-background-color: #74b9ff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.lms.controller.LoginPageFormController">
+   <children>
+      <TextField fx:id="txtName" layoutX="412.0" layoutY="119.0" prefHeight="42.0" prefWidth="226.0" promptText="User Name here" />
+      <PasswordField fx:id="txtPwd" layoutX="412.0" layoutY="179.0" prefHeight="42.0" prefWidth="226.0" promptText="Password here">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </PasswordField>
+      <JFXButton buttonType="RAISED" layoutX="491.0" layoutY="251.0" onAction="#logInOnAction" style="-fx-background-color: #2f3542;" text="Log in" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="lblHide" layoutX="599.0" layoutY="185.0" onMousePressed="#showPasswordOnMousePressed" onMouseReleased="#hidePasswordOnMousePressed" prefHeight="30.0" prefWidth="30.0">
+         <graphic>
+            <ImageView fx:id="hideEye" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/hide.png" />
+               </image>
+            </ImageView>
+         </graphic></Label>
+      <ImageView fitHeight="387.0" fitWidth="369.0" layoutX="9.0" layoutY="6.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../assets/isometric-online-library-mobile-education-e-learning-concept-3d-vector-illustration_627510-517 (1).jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,16 @@
+
+f
+java:S1104"PMake root a static final constant or non-public and provide accessors if needed.(ı„È¬
+i
+java:S1104"SMake txtName a static final constant or non-public and provide accessors if needed.(ºßÕû
+m
+java:S1104"RMake txtPwd a static final constant or non-public and provide accessors if needed.(ÉÔ¦Ìÿÿÿÿÿ
+i
+java:S1104"SMake lblHide a static final constant or non-public and provide accessors if needed.(ø†Ø
+O
+java:S1172"2Remove this unused method parameter "actionEvent".(æ®ì…8º³Àíã1
+W	java:S125"<This block of commented-out lines of code should be removed.(˜Ñèy8ÁƒÁíã1
+S
+java:S1172 "1Remove this unused method parameter "mouseEvent".(Ô¯õçşÿÿÿÿ8ıÜ¾íã1
+S
+java:S1172-"1Remove this unused method parameter "mouseEvent".(œÕÀ»øÿÿÿÿ8É„Åíã1

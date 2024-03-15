@@ -1,0 +1,32 @@
+<component name="libraryTable">
+  <library name="antlr-2.7.7">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/antlr-2.7.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/byte-buddy-1.8.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/cache-api-1.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/classmate-1.3.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/controlsfx-8.40.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/dom4j-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/ehcache-2.10.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/ehcache-3.8.1 (1).jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/hibernate-commons-annotations-5.0.4.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/hibernate-commons-annotations-5.0.5.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/hibernate-core-5.3.6.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/hibernate-ehcache-5.3.6.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/hibernate-jcache-5.3.36.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/jandex-2.0.5.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/javassist-3.23.1-GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/javax.activation-api-1.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/javax.persistence-api-2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/jaxb-api-2.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/jaxb-runtime-2.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/jboss-logging-3.3.2.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/jfoenix-8.0.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/mysql_connector.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lk/ijse/lms/lib/slf4j-api-1.7.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
